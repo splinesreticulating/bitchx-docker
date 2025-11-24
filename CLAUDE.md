@@ -8,103 +8,56 @@ BitchX Docker provides a containerized BitchX IRC client (version 1.3) with the 
 
 ## Architecture
 
-### Multi-Stage Docker Build
-- **Builder stage**: Compiles BitchX from source with SSL support using static linking for OpenSSL libraries
-- **Final stage**: Minimal Debian Bookworm runtime with only necessary libraries (libssl3, libncurses6)
-- User ID/Group ID are passed as build arguments to create a matching user inside the container
-
-### Container User Mapping
-The container runs as user `mute` with UID/GID set from environment variables. This ensures:
-- Files created in mounted volumes have correct ownership
-- Configuration persists with proper permissions
-- `.env` file contains the UID/GID values (defaults: 1003/1003)
+### Docker Build
+Multi-stage build: compiles BitchX with SSL in builder stage, then creates minimal runtime image.
+User ID/GID from `.env` (default: 1003/1003) ensures correct file permissions in mounted volumes.
 
 ### Volume Mounts
-- `./config` → `/home/mute/.BitchX` - BitchX configuration and persistent data
+- `./config` → `/home/mute/.BitchX` - Configuration and persistent data
 - `./osiris-config` → `/home/mute/osiris` - Osiris script and themes
-- `./config/.ircrc` → `/home/mute/.ircrc` - IRC startup commands (loads Osiris)
-- `./launch-bx.sh` → `/home/mute/launch-bx.sh` - BitchX launcher inside container
+- `./config/.ircrc` → `/home/mute/.ircrc` - Startup commands (loads Osiris)
+- `./launch-bx.sh` → `/home/mute/launch-bx.sh` - BitchX launcher
 
-### Initialization Flow
-1. Container starts with `entrypoint.sh`
-2. Kills any existing BitchX processes to prevent duplicates
-3. BitchX launches as the main container process via `launch-bx.sh`
-4. Osiris script is loaded automatically via `.ircrc` when BitchX starts
-5. Users attach/detach using `docker compose attach` and `Ctrl+P, Ctrl+Q`
-6. When BitchX exits (via `/quit`), the container stops automatically
+### How It Works
+1. `entrypoint.sh` → `launch-bx.sh` starts BitchX as PID 1
+2. Osiris auto-loads via `.ircrc`
+3. Attach/detach with `Ctrl+P, Ctrl+Q`
+4. Exiting BitchX stops the container
 
 ## Common Commands
 
-### Starting BitchX
+### Basic Usage
 ```bash
-# Quick start with session manager (builds, starts container)
-./bx.sh start
-
-# Simple start (just starts container, BitchX auto-launches)
-./bx-start
-
-# Manual start
-export UID=$(id -u)
-export GID=$(id -g)
-docker compose up -d   # BitchX starts automatically
+./bx.sh start      # Build and start BitchX
+./bx.sh attach     # Attach to running session
+./bx.sh stop       # Stop BitchX container
+./bx.sh status     # Check if running
 ```
 
-### Session Management
+### Detaching
+Press `Ctrl+P, Ctrl+Q` to detach without stopping BitchX.
+Just close your terminal if you prefer - BitchX keeps running.
+
+### Direct Docker Commands
 ```bash
-# Using the session manager
-./bx.sh start      # Start BitchX (builds, starts container with BitchX)
-./bx.sh attach     # Attach to running BitchX session
-./bx.sh status     # Check session status
-./bx.sh stop       # Stop session (stops container)
-./bx.sh exec '<cmd>' # Execute IRC command
-
-# Alternative launcher scripts
-./bx-start         # Start container (BitchX auto-launches)
-./bx-attach        # Attach to running BitchX session
-
-# Direct Docker commands
-docker compose up -d         # Start container (BitchX auto-starts)
-docker compose attach bitchx # Attach to BitchX session
+docker compose up -d         # Start container
+docker compose attach bitchx # Attach to session
 docker compose down          # Stop container
+docker compose restart       # Restart if stuck
 ```
 
-### Detaching from BitchX
-- **Recommended**: Use `Ctrl+P, Ctrl+Q` to detach from Docker session safely
-- **Alternative**: Just close your terminal - BitchX keeps running
-- **Avoid**: BitchX's `/detach` command (not needed with Docker attach)
-- **Recovery**: If session breaks, run `docker compose restart` and reattach with `./bx-attach`
-- **Important**: BitchX runs as the main container process, so `docker compose attach` will always reconnect to the same session. No more duplicate instances!
-- **Note**: If you `/quit` BitchX, the container will stop. Restart with `./bx.sh start` or `./bx-start`
-
-### Building
+### Advanced
 ```bash
-# Build the image
-docker compose build
-
-# Rebuild from scratch
-docker compose build --no-cache
-```
-
-### Accessing the Container
-```bash
-# Attach to running BitchX session
-docker compose attach bitchx
-
-# Execute commands in running container (opens new shell)
-docker compose exec bitchx bash
-
-# Detach from BitchX session
-# Press: Ctrl+P, Ctrl+Q
+docker compose build --no-cache  # Rebuild from scratch
+docker compose exec bitchx bash  # Open shell in container
 ```
 
 ## Key Files
 
-### Entry Scripts
-- `bx.sh` - Main session manager (start/attach/stop/status/exec commands)
-- `bx-start` - Simple launcher (sets UID/GID, starts container)
-- `bx-attach` - Attach to running BitchX session
-- `entrypoint.sh` - Container entrypoint (kills existing processes, launches BitchX)
-- `launch-bx.sh` - BitchX launcher script (sets IRCNAME, starts BitchX)
+### Scripts
+- `bx.sh` - Main manager (start/attach/stop/status commands)
+- `entrypoint.sh` - Container entrypoint
+- `launch-bx.sh` - BitchX launcher (sets TERM, IRCNAME)
 
 ### Configuration
 - `.env` - Environment variables for UID/GID mapping
@@ -123,35 +76,30 @@ docker compose exec bitchx bash
 - `osiris-config/formats/` - Message format templates
 - `osiris-config/modules/` - Additional script modules
 
-## Development Notes
+## Technical Details
 
-### Modifying the Build
-- BitchX is compiled with `--with-ssl --with-plugins` flags
-- SSL libraries are statically linked (`LDFLAGS="-Wl,-Bstatic -lssl -lcrypto -Wl,-Bdynamic"`)
-- Changing build options requires modifying `Dockerfile` and rebuilding with `--no-cache`
+### Build Configuration
+- BitchX compiled with `--with-ssl --with-plugins`
+- SSL libraries statically linked for portability
+- Rebuild with `--no-cache` if changing Dockerfile
 
-### User ID Conflicts
-If file permissions are incorrect:
-1. Update `.env` with correct UID/GID values
-2. Rebuild: `docker compose build --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g)`
-3. Fix existing file ownership: `sudo chown -R $(id -u):$(id -g) config/ osiris-config/`
+### User Mapping
+UID/GID from `.env` (defaults: 1003/1003) ensures correct file permissions.
+Fix permissions if needed: `sudo chown -R $(id -u):$(id -g) config/ osiris-config/`
 
-### Default Server
-The default IRC server is `irc.choopa.net` (EFnet). Full server list is in `efnet-servers.txt`.
+### Architecture
+- BitchX is the main container process (PID 1)
+- `stdin_open` and `tty` enabled for interactive use
+- Session persists when detached - no duplicate instances
+- Container stops when BitchX exits
 
-### Container Architecture
-- BitchX runs as the main container process (via entrypoint.sh → launch-bx.sh)
-- Container has stdin_open and tty enabled for interactive use
-- Users attach/detach with `docker compose attach` and `Ctrl+P, Ctrl+Q`
-- The BitchX session persists when detached - no duplicate instances
-- When BitchX exits, the container stops automatically
+## IRC Servers
 
-## IRC Server Configuration
+Default: `irc.choopa.net` (EFnet). See `efnet-servers.txt` for more.
 
-To connect to a different server in BitchX:
+Connect to a different server:
 ```
-/server irc.choopa.net
 /server irc.mzima.net
 ```
 
-Alternative ports if 6667 is blocked: 6660-6669, 7000
+Alternative ports: 6660-6669, 7000

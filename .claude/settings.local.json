@@ -12,7 +12,10 @@
       "Bash(cat:*)",
       "WebFetch(domain:linux.die.net)",
       "WebFetch(domain:man.cx)",
-      "Bash(git clone:*)"
+      "Bash(git clone:*)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$(cat <<''EOF''\nFix attach/detach by making BitchX the main container process\n\nChanges:\n- BitchX now runs as the main container process instead of using tail\n- Removed command override from compose.yaml\n- Updated entrypoint.sh to exec launch-bx.sh directly\n- Simplified attach scripts to use docker attach without process checks\n- Removed tmux dependency, added procps for future process management\n- Updated all documentation to reflect new architecture\n\nThis fixes the issue where detaching with Ctrl+P,Ctrl+Q and running\n./bx-attach would spawn duplicate BitchX instances. Now docker attach\nproperly reattaches to the same session every time.\n\n🤖 Generated with [Claude Code](https://claude.com/claude-code)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n)\")",
+      "Bash(git push)"
     ],
     "deny": [],
     "ask": []
