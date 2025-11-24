@@ -1,1 +1,0 @@
-^fset format_send_public %B<${ischanop($2 $1)?[$(cyn)@$(cl)]:isvoice($1 $2)?[$(cyn)+$(cl)]:}%W$2%B>%n $3-

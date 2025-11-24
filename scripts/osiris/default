@@ -1,44 +1,0 @@
-#!/bin/sh
-# script by codelogic...
-clear
-echo "[0m"
-echo ""
-echo "   [1;34mÜÜÛßßÛÜÜ[0m [1;34mÜÜÛßßÛÜÜ[0m  [1;34mßßß[0m [1;34mÜÜÛßßÛÜÜ[0m  [1;34mßßß[0m [1;34mÜÜÛßßÛÜÜ[0m"
-echo "[3C[1;34mŞ[46m²²[40mİ[0m  [1;34mŞ[46m²²Û²²[40mÜÜ[0m [1;34mßßß[0m [1;34mÜ[46mÛ²Û[40mŞ[46m²²[40mİ[0m  [1;34mŞ[46m²²[40mİÜ[46mÛ²Û[40mŞ[46m²²[40mÜÜ[0m [1;34mßßß[0m[1;30mdrendite[0m"
-echo "[35mÛÛ[37m [1;34;46m°±²[0m [35mŞİ[37m [1;34;46m±±[0;36mÜÜÜ[37m [36mß[1;34mß[46m²±[40mÜÜİ[46m±±±°±±[0m [35mÛÛ[37m [1;34;46m±±[0;36mÛ[1;34mİ[46m±±±[0;36mÜÜÜ[37m [36mß[1;34mß[46m²±[40mÜÜ[0m [35mÛ[1;45m     ± °  °°   °°  °°±²²ÛÛÛ[0m"
-echo "[3C[36mŞ[1;34;46m°±[0;36mİ[37m  [36mŞ[1;34;46m °±°°[0;36mİ[37m  [36mŞ[1;34;46m°±[40mİ[0;36mİ[1;34;46m°°[0;36mİ[1;34;46m °°[0m[7C[36mİ[1;34;46m°°[0;36mİ[1;34;46m °°[0;36mİ[37m  [36mŞ[1;34;46m°±[40mİ[0m"
-echo "[4C[36mßßÛÜÜÛßß[37m [36mßßÛÜÜÛßß[37m [36mŞßß[37m [1;34;46m   [0m[7C[36mŞßß[37m  [36mßßÛÜÜÛßß[37m"
-echo ""
-echo "[0m"
-sleep 3
-clear
-echo
-echo "		[1;30mÚ[0mÄÄ[1;37mÄÄ[0mÄÄ[1;30mÄÄÄÄ[1;37mú                       [1;37mú[1;30mÄÄÄÄ[0mÄÄ[1;37mÄÄ[0mÄÄ[1;30m¿[0m"
-
-echo "		[1;36m³                                             [1;36m³"
-echo "		[1;36m³[0m             osir[0;36mi[0ms-1b by shiftee.           [1;36m³"
-echo "		[0;36m³   [1;37mc[0momments[1;37m/[0mideas? [1;37me[0mmail [0;36m- [0;36mshiftee[1;36m@[0;36musa[1;37m.[00;36mnet   [0;36m³"
-echo "		[1;36m³  [1;37mi[0mrc  - [0;36mshiftee[1;36m@[0;36mefnet[0m or [0;36mi||uzion[1;36m@[0;36mundernet  [1;36m³"
-echo "		[1;36m³                                             [1;36m³"
-echo "		[1;30mÀ[0mÄÄ[1;37mÄÄ[0mÄÄ[1;30mÄÄÄÄ[1;37mú                       [1;37mú[1;30mÄÄÄÄ[0mÄÄ[1;37mÄÄ[0mÄÄ[1;30mÙ[0m"
-echo
-sleep 2
-if [ ! -e ~/.osiris.default ]; then
-  echo "copying osiris default file to ~/ (needed if it's your first time loading)"
-  cp ~/osiris/.osiris.default ~/
-  sleep 2
-  echo "done."
-  echo "Now just add load ~/osiris/os.bx to your .bitchxrc, and you're all set =)"
-else
-  echo "~/.osiris.default exists"
-  echo -n "Do you Wish to overwrite? (y/n)"
-  read yesno
-  if [ "$yesno" = "y" ]; then
-    mv ~/.osiris.default ~/.osiris.default.back
-    cp ~/osiris/.osiris.default ~/
-    echo "ok, replaced old file, and backed up old file to ~/osiris/.osiris.default.back"    
-  else
-    echo "Ok, not Overwriting."
-    exit 1   
-  fi
-fi

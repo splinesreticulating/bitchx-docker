@@ -1,4 +1,0 @@
-SET FORMAT_PUBLIC %W<${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%B$1%W>%n $3-
-SET FORMAT_PUBLIC_OTHER %W<${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%B$1%W/%n$2%W>%n $3-
-SET FORMAT_PUBLIC_AR %Wó${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%Y$1%Wò%n $3-
-SET FORMAT_PUBLIC_OTHER_AR %Wó${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%Y$1%W/%n$2%Wò%n $3-

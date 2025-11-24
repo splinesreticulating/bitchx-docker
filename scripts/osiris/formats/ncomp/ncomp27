@@ -1,4 +1,0 @@
-^assign n.e ]
-^assign n.e2 [
-^fset format_nick_comp $(n.e2)$0$(n.e)$1-
-^fset format_nick_comp_auto $(n.e2)$0$(n.e)$1-

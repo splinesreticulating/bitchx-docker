@@ -1,1 +1,0 @@
-do set show_numerics_str $cparse("%KÄ%cÄ%CÄ")

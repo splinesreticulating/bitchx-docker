@@ -1,2 +1,0 @@
-^fset format_send_msg %b-%B¯ %K(%G$1%K)%n $3-
-^fset format_msg %B®%b- %K(%G$1 %Cí %g$2%K)%n $3-

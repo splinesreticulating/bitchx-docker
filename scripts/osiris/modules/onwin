@@ -1,8 +1,0 @@
-
-on ^window '% $G BitchX: Press Ctrl-F to see who left Ctrl-E to change to' #
-
-on ^invite * {echo $G $0 invites you to $1-;echo $G osiris\($(osrel)\) press CTRL-K to join}
-
-::oweff had the right idea with this one 
-on ^window '% $G OK, you're /away now. Hurry back!' #
-on ^window '% $G OK, you're not /away anymore. Did you have fun?' #

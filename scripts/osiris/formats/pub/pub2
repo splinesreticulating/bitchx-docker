@@ -1,4 +1,0 @@
-SET FORMAT_PUBLIC %b<%n$1%b>%n $3-
-SET FORMAT_PUBLIC_OTHER %b<%n$1%K:%n$2%b>%n $3-
-SET FORMAT_PUBLIC_AR %b<%Y$1%b>%n $3-
-SET FORMAT_PUBLIC_OTHER_AR %b<%Y$1%K:%n$2%b>%n $3-

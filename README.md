@@ -1,24 +1,63 @@
-# BitchX with Osiris Script in Docker
+# BitchX Docker
 
-This project provides a secure Docker container running BitchX IRC client with the Osiris script pre-loaded.
+A containerized BitchX IRC client (version 1.3) with Osiris script pre-loaded and configured for EFnet.
 
 ## Quick Start
 
-1. **Run the launcher script:**
-   ```bash
-   ./start-bitchx.sh
-   ```
+```bash
+./bx.sh start
+```
 
-2. **Or use Docker Compose directly:**
-   ```bash
-   # Build and start
-   docker compose up -d
-   
-   # Attach to the running session
-   docker compose attach bitchx
-   ```
+## Commands
 
-**Default Server**: `irc.choopa.net` (reliable EFnet server)
+```bash
+./bx.sh attach     # Attach to running BitchX session
+./bx.sh stop       # Stop BitchX container
+./bx.sh status     # Show session status
+./bx.sh exec <cmd> # Execute IRC command
+```
+
+## Features
+
+- ✅ **BitchX 1.3** with SSL support
+- ✅ **Osiris script** pre-loaded with themes and formats
+- ✅ **EFnet servers** configured and ready to connect
+- ✅ **Docker attach/detach** with `Ctrl+P, Ctrl+Q`
+- ✅ **Persistent configuration** via volume mounts
+- ✅ **User ID mapping** for proper file permissions
+
+## Workflow
+
+1. **Start**: `./bx.sh start` → builds, starts container, launches BitchX
+2. **Use**: Full BitchX with Osiris script loaded
+3. **Detach**: `Ctrl+P, Ctrl+Q` → back to shell, BitchX keeps running
+4. **Reattach**: `./bx.sh attach` → back to BitchX session
+5. **Stop**: `./bx.sh stop` or `/quit` in BitchX
+
+## Recovery
+
+If attach/detach breaks:
+```bash
+docker compose restart
+./bx.sh attach
+```
+
+## Architecture
+
+- **Multi-stage Docker build** compiling BitchX with SSL support
+- **Container user mapping** for proper file permissions
+- **Volume mounts** for persistent configuration
+- **Docker attach/detach** for session management
+
+## Files
+
+- `bx.sh` - Main launcher script
+- `compose.yaml` - Docker Compose configuration
+- `Dockerfile` - Multi-stage build definition
+- `entrypoint.sh` - Container entrypoint
+- `launch-bx.sh` - BitchX launcher script
+- `config/.ircrc` - IRC configuration (loads Osiris)
+- `osiris-config/` - Osiris script with themes and formats
 
 ## EFnet Servers
 
@@ -28,7 +67,6 @@ The container comes pre-configured with multiple EFnet servers:
 - `irc.choopa.net` (default)
 - `irc.mzima.net`
 - `irc.prison.net`
-- `irc.sekure.us`
 
 ### Regional Servers
 - **US West**: `irc.west.gblx.net`, `irc.easynews.com`
@@ -38,7 +76,8 @@ The container comes pre-configured with multiple EFnet servers:
 ### Alternative Ports
 If port 6667 is blocked, try: 6660-6669, 7000
 
-### Server Switching
+## Server Switching
+
 In BitchX, you can switch servers with:
 ```
 /server irc.choopa.net
@@ -51,56 +90,27 @@ In BitchX, you can switch servers with:
 If you prefer to run it manually:
 
 1. **Set your user ID (for file permissions):**
-   ```bash
-   export UID=$(id -u)
-   export GID=$(id -g)
-   ```
+```bash
+export UID=$(id -u)
+export GID=$(id -g)
+```
 
-2. **Build the container:**
-   ```bash
-   docker compose build
-   ```
+2. **Build container:**
+```bash
+docker compose build
+```
 
 3. **Run BitchX:**
-   ```bash
-   docker compose run --rm bitchx
-   ```
-
-## What's Included
-
-- **BitchX 1.3** - Compiled from source with SSL support
-- **Osiris Script** - Pre-configured and ready to use
-- **Secure User Mapping** - Runs as your user ID for proper file permissions
-- **Persistent Configuration** - Your settings are saved in the `./config` directory
+```bash
+docker compose run --rm bitchx
+```
 
 ## Configuration
 
 - **Script Location**: `/home/mute/osiris/`
 - **BitchX Config**: `./config/.BitchX/` (mounted volume)
 - **Default Nickname**: `mute`
-
-## Container Details
-
-- **Base Image**: Debian Bookworm Slim
-- **User**: mute (mapped to your UID/GID)
-- **Entry Point**: `/usr/local/bin/BitchX`
-- **Default Args**: `-n mute`
-
-## Troubleshooting
-
-If you encounter permission issues, make sure your UID/GID are set correctly:
-
-```bash
-export UID=$(id -u)
-export GID=$(id -g)
-docker compose up -d
-```
-
-To stop the container:
-
-```bash
-docker compose down
-```
+- **Default Realname**: `Screaming Mute`
 
 ## Osiris Script Features
 

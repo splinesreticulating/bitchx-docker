@@ -1,1 +1,0 @@
-set format_send_notice %K[%rnotice%K(%R$1%K)] %n$3-

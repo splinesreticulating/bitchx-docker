@@ -1,2 +1,0 @@
-^fset format_send_msg %B[%cm%Csg%B(%C$1%B)]%n $3-
-^fset format_msg %B[%C$1%B(%c$2%B)]%n $3-

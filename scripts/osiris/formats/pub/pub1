@@ -1,4 +1,0 @@
-^fset format_public %K<${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%n$1%K>%n $3-
-^fset format_public_other %K<${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%n$1%b/%n$2%K>%n $3-
-^fset format_public_ar %K<${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%Y$1%K>%n $3-
-^fset format_public_other_ar %K<${ischanop($1 $2)?[$(cyn)@$(cl)]:isvoice($2 $1)?[$(cyn)+$(cl)]:}%Y$1%b/%n$2%K>%n $3-

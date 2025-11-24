@@ -1,2 +1,0 @@
-^fset format_send_msg %K-> %C(%c$1%C)%n $3-
-^fset format_msg %C$1%K(%c$2%K):%n $3-

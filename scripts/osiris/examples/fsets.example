@@ -1,6 +1,0 @@
-alias _showfsets {
-echo $(hblk)[$(cl)fsets $(hwht)#1$(hblk)]$(cl) $G $(c1)join$(c6)!$(c2)#channel $(c6)-> $(c5)nick$(c6)\($(c3)user@host$(c6)\)
-echo $(hblk)[$(cl)fsets $(hwht)#3$(hblk)]$(cl) $G $(c1)join $(c6)\($(c2)#channel$(c6)\)$(c7) nick $(c6)\($(c2)user@host$(c6)\)}
-}
-
-^_showfsets
