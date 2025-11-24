@@ -1,7 +1,9 @@
 # IRC Configuration
 set realname Screaming Mute
 set nickname mute
-set CTCP_VERSION WeeChat 4.20.69
 
 # Load Osiris script
 load ~/osiris/os.bx
+
+# Custom CTCP VERSION reply (using Osiris version system)
+load ~/osiris/sets/v.custom
