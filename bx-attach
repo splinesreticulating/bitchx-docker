@@ -1,15 +1,14 @@
 #!/bin/bash
-# Attach to BitchX tmux session (creates if needed)
+# Attach to BitchX Docker session
 
-if ! docker ps | grep -q bitchx; then
+if ! docker ps | grep -q bitchx_session; then
     echo "Error: BitchX container is not running"
     echo "Start it with: ./bx-start"
     exit 1
 fi
 
 echo "Connecting to BitchX..."
-echo "To detach: Press Ctrl+B then D"
+echo "To detach: Press Ctrl+P, Ctrl+Q"
 echo ""
 
-# Run startup script which handles both attach and create
-docker exec -it bitchx /home/mute/startup.sh
+docker attach bitchx_session

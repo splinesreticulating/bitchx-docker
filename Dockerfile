@@ -23,7 +23,7 @@ FROM debian:bookworm-slim
 
 RUN apt-get update && apt-get install -y \
     libssl3 libncurses6 ca-certificates \
-    tmux \
+    procps \
     && rm -rf /var/lib/apt/lists/*
 
 # Setup User Arguments

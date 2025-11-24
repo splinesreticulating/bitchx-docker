@@ -17,4 +17,3 @@ services:
       - ./osiris-config:/home/mute/osiris
       - ./config/.ircrc:/home/mute/.ircrc
       - ./launch-bx.sh:/home/mute/launch-bx.sh
-    command: ["tail", "-f", "/dev/null"]

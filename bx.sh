@@ -37,41 +37,35 @@ attach_session() {
     if check_container; then
         echo "🔗 Attaching to BitchX session..."
         echo "   Use Ctrl+P, Ctrl+Q to detach"
-        
-        # Simple check: if BitchX is running, attach to it
-        # If not running, start new one
-        if docker compose exec bitchx sh -c 'pgrep -f BitchX >/dev/null'; then
-            echo "✅ Found existing BitchX session, connecting..."
-            docker compose exec bitchx /home/mute/launch-bx.sh
-        else
-            echo "⚠️  No BitchX session found, starting new one..."
-            docker compose exec bitchx /home/mute/launch-bx.sh
-        fi
+        echo ""
+        docker compose attach bitchx
     fi
 }
 
 start_session() {
     echo "🚀 Starting BitchX with osiris..."
-    
+
     # Set terminal type for proper display
     export TERM=xterm
-    
+
     # Export current user ID and group ID (handle readonly UID)
     MY_UID=$(id -u)
     MY_GID=$(id -g)
     # Only export if not already set (from .env)
     if [ -z "$UID" ]; then export UID=$MY_UID; fi
     if [ -z "$GID" ]; then export GID=$MY_GID; fi
-    
-    # Build and run the container
+
+    # Build and run the container (BitchX auto-starts via entrypoint)
     echo "Building BitchX container..."
     docker compose build
-    
-    echo "Starting BitchX container..."
+
+    echo "Starting BitchX container (BitchX will auto-start)..."
     docker compose up -d
-    
-    echo "Launching BitchX with osiris script..."
-    docker compose exec bitchx /home/mute/launch-bx.sh
+
+    echo ""
+    echo "✅ BitchX is starting!"
+    echo "   Attach with: $0 attach"
+    echo "   Or: docker compose attach bitchx"
 }
 
 stop_session() {
