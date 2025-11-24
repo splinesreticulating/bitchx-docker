@@ -32,8 +32,7 @@ check_container() {
 cmd_start() {
     echo "Starting BitchX..."
 
-    # Set UID/GID for user mapping
-    export UID=$(id -u)
+    # Set GID for user mapping (UID is auto-set by bash)
     export GID=$(id -g)
 
     docker compose build
