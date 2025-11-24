@@ -1,0 +1,57 @@
+
+alias ohelp {
+  if ([$0]) {
+   if ([$0]==[autoaway]) {echo $G usage$(hblk):$(cl) /autoaway $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)] [$(cl)after # of minutes$(hblk)];echo $G autoaway is currently$(hblk):$(cl) $aaway;echo $G description$(hblk):$(cl) turns your autoaway on$(hblk)/$(cl)off}
+   if ([$0]==[autoget]) {echo $G usage$(hblk):$(cl) /autoget $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G dcc autoget is currently$(hblk):$(cl) $aget;echo $G description$(hblk):$(cl) turns your dcc autoget on$(hblk)/$(cl)off}
+   if ([$0]==[bot]) {bot}
+   if ([$0]==[btype]) {echo $G usage$(hblk):$(cl) /btype $(hblk)[$(cl)n$(hblk)/$(cl)b$(hblk)/$(cl)h$(hblk)/$(cl)d$(hblk)/$(cl)s$(hblk)];echo $G ban type is currently$(hblk):$(cl) $btype;echo $G description$(hblk):$(cl) chooses what bantype to use when you ban/bk someone}
+   if ([$0]==[cinfo]) {echo $G usage$(hblk):$(cl) /cinfo $(hblk)[$(cl)client_information you want$(hblk)]$(cl);echo $G client_information currently set to$(hblk):$(cl) $(cinfo);echo $G description$(hblk):$(cl) changes your client_information}
+   if ([$0]==[clean]) {echo $G usage$(hblk):$(cl) /clean;echo $G description$(hblk):$(cl) kicks mIRC/PIRCH/ViRC users from your current channel}
+   if ([$0]==[color]) {echo $G usage$(hblk):$(cl) /color;echo $G description$(hblk):$(cl) starts up the color customizer}
+   if ([$0]==[config]) {echo $G usage$(hblk):$(cl) /config;echo $G description$(hblk):$(cl) configures script settings}
+   if ([$0]==[csave]) {echo $G usage$(hblk):$(cl) /csave;echo $G description$(hblk):$(cl) saves color settings}
+   if ([$0]==[default]) {echo $G usage$(hblk):$(cl) /default;echo $G description$(hblk):$(cl) restores default osiris formats}
+   if ([$0]==[email]) {echo $G usage$(hblk):$(cl) /email $(hblk)[$(cl)your email address$(hblk)];echo $G email currently set to$(hblk):$(cl) $email;echo $G description$(hblk):$(cl) sets your email address}
+   if ([$0]==[faway]) {echo $G usage$(hblk):$(cl) /faway $(hblk)[$(cl)nick$(hblk)] [$(cl)away message$(hblk)];echo $G description$(hblk):$(cl) sends a fake away notice $(hblk)[$(cl)nick$(hblk)]}
+   if ([$0]==[fchat]) {echo $G usage$(hblk):$(cl) /fchat $(hblk)[$(cl)nick$(hblk)];echo $G description$(hblk):$(cl) sends a fake dcc chat request to $(hblk)[$(cl)nick$(hblk)]}
+   if ([$0]==[fdcc]) {echo $G usage$(hblk):$(cl) /fdcc $(hblk)[$(cl)nick$(hblk)] [$(cl)file$(hblk)] [$(cl)filesize$(hblk)];echo $G note$(hblk):$(cl) filesize is in bytes $(hblk)\($(cl)b$(hblk)\);echo $G description$(hblk):$(cl) sends a fake file through dcc to $(hblk)[$(cl)nick$(hblk)]}
+   if ([$0]==[format]) {echo $G usage$(hblk):$(cl) /format;echo $G description$(hblk):$(cl) starts up the format customizer}
+   if ([$0]==[frelm]) {echo $G usage$(hblk):$(cl) /frelm $(hblk)[$(cl)fake nick$(hblk)] [$(cl)nick$(hblk)/$(cl)channel to send to$(hblk)] [$(cl)fake msg$(hblk)];echo $G description$(hblk):$(cl) relays a fake msg from $(hblk)[$(cl)nick$(hblk)]$(cl) to $(hblk)[$(cl)nick$(hblk)/$(cl)#channel$(hblk)]}
+   if ([$0]==[freln]) {echo $G usage$(hblk):$(cl) /freln $(hblk)[$(cl)fake nick$(hblk)] [$(cl)nick$(hblk)/$(cl)channel to send to$(hblk)] [$(cl)fake notice$(hblk)];echo $G description$(hblk):$(cl) relays a fake notice from $(hblk)[$(cl)nick$(hblk)]$(cl) to $(hblk)[$(cl)nick$(hblk)/$(cl)#channel$(hblk)]}
+   if ([$0]==[freply]) {echo $G usage$(hblk):$(cl) /freply $(hblk)[$(cl)nick$(hblk)/$(cl)#channel$(hblk)] [$(cl)type$(hblk)] [$(cl)reply$(hblk)];echo $G description$(hblk):$(cl) sends a fake ctcp reply to$(hblk)[$(cl)nick$(hblk)/$(cl)#channel$(hblk)]}
+   if ([$0]==[fsave]) {echo $G usage$(hblk):$(cl) /fsave;echo $G description$(hblk):$(cl) saves your current format settings}
+   if ([$0]==[fsay]) {fhelp}
+   if ([$0]==[massinv]) {echo $G usage$(hblk):$(cl) /massinv $(hblk)[$(cl)#channel$(hblk)]$(cl);echo $G description$(hblk):$(cl) mass invites $(hblk)[$(cl)#channel$(hblk)]$(cl) to your current channel}
+   if ([$0]==[mirck]) {echo $G usage$(hblk):$(cl) /mirck $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G mIRC kick is currently $(hwht)$mirck;echo $G description$(hblk):$(cl) turns mIRC kick when you /clean your current channel on$(hblk)/$(cl)off}
+   if ([$0]==[mlog]) {echo $G usage$(hblk):$(cl) /mlog $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G message logging is currently$(hblk):$(cl) $awayl;echo $G description$(hblk):$(cl) turns your message log on$(hblk)/$(cl)off}
+   if ([$0]==[mp3]) {echo $G usage$(hblk):$(cl) /mp3 $(hblk)[$(cl)command$(hblk)] [$(cl)filename$(hblk)];echo $G commands$(hblk):$(cl) play            $(hblk):$(cl)plays $(hblk)[$(cl)filename$(hblk)];echo $G           stop            $(hblk):$(cl)stops current mp3;echo $G           list            $(hblk):$(cl)lists mp3's in your mp3 file directory;echo $G           pub $(hblk)[$(cl)mp3$(hblk)]       $(hblk):$(cl)publicly play an mp3;echo $G;echo $G flags$(hblk):$(cl) -2    $(hblk):$(cl)downsample 1:2 $(hblk)\($(cl)22 kHz$(hblk)\);echo $G        -4    $(hblk):$(cl)downsample 1:4 $(hblk)\($(cl)11 kHz$(hblk)\);echo $G        -m    $(hblk):$(cl)mix both channels $(hblk)\($(cl)mono$(hblk)\);echo $G        -a d  $(hblk):$(cl)set audio device;echo $G;echo $G description$(hblk):$(cl) plays mp3's while on irc}
+   if ([$0]==[mreop]) {echo $G usage$(hblk):$(cl) /mreop;echo $G description$(hblk):$(cl) reop's all current +o users in the channel}
+   if ([$0]==[nhp]) {echo $G usage$(hblk):$(cl) /nhp $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G nethack protection is currently$(hblk):$(cl) $nhp;echo $G description$(hblk):$(cl) turns net hack protection on$(hblk)/$(cl)off}
+   if ([$0]==[osave]) {echo $G usage$(hblk):$(cl) /osave;echo $G description$(hblk):$(cl) saves osiris script settings}
+   if ([$0]==[pirchk]) {echo $G usage$(hblk):$(cl) /pirchk $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G PIRCH kick is currently $(hwht)$pirchk;echo $G description$(hblk):$(cl) turns PIRCH kick when you /clean your current channel on$(hblk)/$(cl)off}
+   if ([$0]==[quick]) {echo $G usage$(hblk):$(cl) /aformat   /cformat   /eformat  /fformat   /kformat   /mformat;echo $G        /nformat   /noformat  /pformat  /scformat  /snformat  /spformat;echo $G        /sbformat  /wformat;echo $G description$(hblk):$(cl) alternative way to change specific formats}
+   if ([$0]==[realname]) {echo $G usage$(hblk):$(cl) /realname $(hblk)[$(cl)realname you want$(hblk)]$(cl);echo $G realname currently set to$(hblk):$(cl) $(realname);echo $G description$(hblk):$(cl) sets your realname}
+   if ([$0]==[relm]) {echo $G usage$(hblk):$(cl) /relm;echo $G description$(hblk):$(cl) relays msgs}
+   if ([$0]==[relsm]) {echo $G usage$(hblk):$(cl) /relsm;echo $G description$(hblk):$(cl) relays sent msgs}
+   if ([$0]==[relw]) {echo $G usage$(hblk):$(cl) /relw;echo $G description$(hblk):$(cl) relays window events}
+   if ([$0]==[saveall]) {echo $G usage$(hblk):$(cl) /saveall;echo $G description$(hblk):$(cl) saves format/color/script settings}
+   if ([$0]==[sync]) {echo $G usage$(hblk):$(cl) /sync;echo $G description$(hblk):$(cl) checks for desynch on your current channel}
+   if ([$0]==[topwin]) {echo $G usage$(hblk):$(cl) /topwin $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G description$(hblk):$(cl) turns the topic bar on$(hblk)/$(cl)on}
+   if ([$0]==[virck]) {echo $G usage$(hblk):$(cl) /virck $(hblk)[$(cl)on$(hblk)/$(cl)off$(hblk)];echo $G ViRC kick is currently $(hwht)$virck;echo $G description$(hblk):$(cl) turns PIRCH kick when you /clean your current channel on$(hblk)/$(cl)off}
+   if ([$0]==[wav]) {echo $G usage$(hblk):$(cl) /wav $(hblk)[$(cl)command$(hblk)] [$(cl)filename$(hblk)];echo $G commands$(hblk):$(cl) play  $(hblk):$(cl)plays $(hblk)[$(cl)filename$(hblk)];echo $G           stop  $(hblk):$(cl)stops current wav;echo $G           list  $(hblk):$(cl)lists wav's in your wav file directory;echo $G;echo $G description$(hblk):$(cl) plays wav's while on irc}
+   if ([$0]==[window]) {whelp}
+ }{
+   echo $cparse("%KÚ´ %bo s %Bi r %Ki s ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ-")
+   echo $cparse("%K³")
+   echo $cparse("%K³  %BÍ %nautoaway   %bÍ %nautoget    %bÍ %nbot        %bÍ %nbtype      %bÍ %ncinfo      %BÍ")
+   echo $cparse("%K³  %BÍ %nclean      %bÍ %ncolor      %bÍ %nconfig     %bÍ %ncsave      %bÍ %ndefault    %BÍ")
+   echo $cparse("%K³  %BÍ %nemail      %bÍ %nfaway      %bÍ %nfchat      %bÍ %nfdcc       %bÍ %nformat     %BÍ")
+   echo $cparse("%K³  %BÍ %nfrelm      %bÍ %nfreln      %bÍ %nfreply     %bÍ %nfsave      %bÍ %nfsay       %BÍ")
+   echo $cparse("%K³  %BÍ %nmassinv    %bÍ %nmirck      %bÍ %nmlog       %bÍ %nmp3        %bÍ %nmreop      %BÍ")
+   echo $cparse("%K³  %BÍ %nnhp        %bÍ %nosave      %bÍ %npirchk     %bÍ %nquick      %bÍ %nrealname   %BÍ")
+   echo $cparse("%K³  %BÍ %nrelm       %bÍ %nrelsm      %bÍ %nrelw       %bÍ %nsaveall    %bÍ %nsync       %BÍ")
+   echo $cparse("%K³  %BÍ %ntopwin     %bÍ %nvirck      %bÍ %n           %bÍ %nwav        %bÍ %nwindow     %BÍ")
+   echo $cparse("%K³")
+   echo $cparse("%KÀ´ %Bh %be l %Kp ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ-")
+ }
+}

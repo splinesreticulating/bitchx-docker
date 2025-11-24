@@ -1,0 +1,27 @@
+^on ^cdcc_prepack * {
+        switch ($0) {
+                (PRIVMSG) {send [os%cdcc] /ctcp $N\ cdcc help for commands}
+                (NOTICE) {notice $1 [os%cdcc] /ctcp $N\ cdcc help for commands}
+ }
+}
+
+^on ^cdcc_pack * {
+        switch ($0) {
+                (PRIVMSG) {send ... \($5x/$fix.size($4)\) #$2 - $6-}
+                (NOTICE) {notice $1 ... \($5x/$fix.size($4)\) #$2 - $6-}
+ }
+}
+
+^on ^cdcc_note * {
+        switch ($0) {
+                (PRIVMSG) {send    øùú -  $2-}
+                (NOTICE) {notice $1    øùú -  $2-}
+ }
+}
+
+^on ^cdcc_postpack * {
+        switch ($0) {
+                (PRIVMSG) {send [os%cdcc] offered/$fix.size($12) . sent/$fix.size($9)}
+                (NOTICE) {notice $1 [os%cdcc] offered/$fix.size($12) . sent/$fix.size($9)}
+ }
+}

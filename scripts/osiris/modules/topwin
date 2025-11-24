@@ -1,0 +1,10 @@
+alias topwin {
+	if ([$0]==[]) {
+        ^ohelp topwin}
+	if ([$0]==[on]) { 
+	@tbar=[on]
+	^window split on}
+	if ([$0]==[off]) {
+	@tbar=[off]
+	^window split off}
+}	

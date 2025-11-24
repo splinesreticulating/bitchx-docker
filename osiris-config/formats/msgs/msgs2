@@ -1,0 +1,2 @@
+^fset format_send_msg %C[%W$1%C]%n $3-
+^fset format_msg %C[%W$1%r!%W$2%C]%n $3-

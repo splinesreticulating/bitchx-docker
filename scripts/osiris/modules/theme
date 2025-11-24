@@ -1,0 +1,170 @@
+alias up_list {
+clear
+ote osiris: arrows scroll, enter selects
+if ([$lhilite]==[0]) {@ lhilite = [$lines]}{@ lhilite = lhilite - 1}
+@ ll = [0]
+while (ll <= lines) {
+if ([$ll]==[$lhilite]) {ote $(hwht)$(bblu)$line[$ll]$(cl)}{ote $line[$ll]}
+@ ll = ll +1
+}}
+
+alias down_list {
+clear
+ote osiris: arrows scroll, enter selects
+if ([$lhilite]==[$lines]) {@ lhilite = [0]}{@ lhilite = lhilite + 1}
+@ ll = [0]
+while (ll <= lines) {
+if ([$ll]==[$lhilite]) {ote $(hwht)$(bblu)$line[$ll]${cl}}{ote $line[$ll]}
+@ ll = ll +1
+}}
+
+alias display {
+clear
+ote osiris: arrows scroll, enter selects
+@ ll = [0]
+while (ll <= lines) {
+if ([$ll]==[$lhilite]) {ote $(hwht)$(bblu)$line[$ll]$(cl)}{ote $line[$ll]}
+@ ll = ll +1
+}}
+
+alias tmenu {
+^bind meta2-A parse_command up_list
+^bind meta2-B parse_command down_list
+^bind ^J parse_command select_menu_item
+window new name theme hide
+window swap theme
+window double on
+theme_menu
+}
+
+alias theme_menu {
+purge line
+@ lines = [5]
+@ lmenu = [themes]
+@ line.0 = [[ 1]$(cl) client themes]
+@ line.1 = [[ 2]$(cl) script themes]
+@ line.2 = [[ 3]$(cl) misc themes]
+@ line.3 = [[ 4]$(cl) themes created by other users]
+@ line.4 = [[ 5]$(cl) save and exit]
+@ line.5 = [[ 6]$(cl) exit without saving]
+@ lhilite = [0]
+display
+}
+
+alias theme_ctheme_menu {
+purge line
+@ lines = [1]
+@ lmenu = [cthemes]
+@ line.0 = [[ 1]$(cl) BitchX by panasync]
+@ line.1 = [[ 2]$(cl) back to themes menu]
+@ lhilite = [0]
+display
+}
+
+alias theme_stheme_menu {
+purge line
+@ lines = [1]
+@ lmenu = [sthemes]
+@ line.0 = [[ 1]$(cl) not available yet]
+@ line.1 = [[ 2]$(cl) back to themes menu]
+@ lhilite = [0]
+display
+}
+
+alias theme_mtheme_menu {
+purge line
+@ lines = [1]
+@ lmenu = [mthemes]
+@ line.0 = [[ 1]$(cl) not available yet]
+@ line.1 = [[ 2]$(cl) back to themes menu]
+@ lhilite = [0]
+display
+}
+
+alias theme_users_menu {
+purge line
+@ lines = [1]
+@ lmenu = [uthemes]
+@ line.0 = [[ 1]$(cl) not available yet]
+@ line.1 = [[ 2]$(cl) back to themes menu]
+@ lhilite = [0]
+display
+}
+
+alias select_menu_item {
+   switch ($lmenu) {
+      (themes) {
+         switch ($lhilite) {
+            (0) {theme_ctheme_menu}
+            (1) {theme_stheme_menu}
+            (2) {theme_mtheme_menu}
+            (3) {theme_users_menu}
+            (4) {save_theme}
+            (5) {nosave_theme}
+          }}
+       (cthemes) {
+         switch ($lhilite) {
+            (0) {ctheme1_load}
+            (1) {theme_menu}
+          }}
+       (sthemes) {
+         switch ($lhilite) {
+            (0) {stheme1_load}
+            (1) {theme_menu}
+          }}
+       (mthemes) {
+         switch ($lhilite) {
+            (0) {mtheme1_load}
+            (1) {theme_menu}
+          }}
+       (uthemes) {
+         switch ($lhilite) {
+            (0) {utheme1_load}
+            (1) {theme_menu}
+          }}
+}}
+
+
+alias ctheme1_load {load ~/osiris/themes/cthemes/ctheme1;sleep 1;theme_menu;@ themedir = [cthemes];@ theme = [ctheme1]}
+alias ctheme2_load {load ~/osiris/themes/cthemes/ctheme2;sleep 1;theme_menu;@ themedir = [cthemes];@ theme = [ctheme2]}
+alias ctheme3_load {load ~/osiris/themes/cthemes/ctheme3;sleep 1;theme_menu;@ themedir = [cthemes];@ theme = [ctheme3]}
+alias ctheme4_load {load ~/osiris/themes/cthemes/ctheme4;sleep 1;theme_menu;@ themedir = [cthemes];@ theme = [ctheme4]}
+
+alias stheme1_load {load ~/osiris/themes/sthemes/stheme1;sleep 1;theme_menu;@ themedir = [sthemes];@ theme = [stheme1]}
+alias stheme2_load {load ~/osiris/themes/sthemes/stheme2;sleep 1;theme_menu;@ themedir = [sthemes];@ theme = [stheme2]}
+alias stheme3_load {load ~/osiris/themes/sthemes/stheme3;sleep 1;theme_menu;@ themedir = [sthemes];@ theme = [stheme3]}
+alias stheme4_load {load ~/osiris/themes/sthemes/stheme4;sleep 1;theme_menu;@ themedir = [sthemes];@ theme = [stheme4]}
+
+alias mtheme1_load {load ~/osiris/themes/mthemes/mtheme1;sleep 1;theme_menu;@ themedir = [mthemes];@ theme = [mtheme1]}
+alias mtheme2_load {load ~/osiris/themes/mthemes/mtheme2;sleep 1;theme_menu;@ themedir = [mthemes];@ theme = [mtheme2]}
+alias mtheme3_load {load ~/osiris/themes/mthemes/mtheme3;sleep 1;theme_menu;@ themedir = [mthemes];@ theme = [mtheme3]}
+alias mtheme4_load {load ~/osiris/themes/mthemes/mtheme4;sleep 1;theme_menu;@ themedir = [mthemes];@ theme = [mtheme4]}
+
+alias utheme1_load {load ~/osiris/themes/uthemes/utheme1;sleep 1;theme_menu;@ themedir = [uthemes];@ theme = [utheme1]}
+alias utheme2_load {load ~/osiris/themes/uthemes/utheme2;sleep 1;theme_menu;@ themedir = [uthemes];@ theme = [utheme2]}
+alias utheme3_load {load ~/osiris/themes/uthemes/utheme3;sleep 1;theme_menu;@ themedir = [uthemes];@ theme = [utheme3]}
+alias utheme4_load {load ~/osiris/themes/uthemes/utheme4;sleep 1;theme_menu;@ themedir = [uthemes];@ theme = [utheme4]}
+
+alias nosave_theme {
+e1
+input "quit without saving [N/y] ? " if ([$0]==[Y]) {restore_keys;window kill;echo $G osiris theme NOT saved.}}
+
+alias save_theme {
+@ rename($HOME/.osiris.theme.save $HOME/.osiris.theme.save.backup)
+@ otconfig = open($HOME/.osiris.theme.save W T)
+@ write($otconfig ### osiris theme save ###)
+@ write($otconfig)
+@ write($otconfig ^assign theme $theme)
+@ write($otconfig ^assign themedir $themedir)
+@ write($otconfig ^eval load ~/osiris/themes/$(themedir)/$(theme))
+restore_keys
+window kill
+@startup=[theme]
+echo checking to see if ~/.osiris.default exists.
+^sleep 1
+if (fexist(~/.osiris.default) != -1) {echo file $(hblk)\($(hwht)~/.osiris.default$(hblk)\)$(cl) found, removing.;^exec rm ~/.osiris.default}{echo file $(hblk)\($(hwht)~/.osiris.default$(hblk)\)$(cl) not found, no need to remove, saving formats.}
+^osw
+echo $G osiris theme saved.
+}
+
+^tmenu

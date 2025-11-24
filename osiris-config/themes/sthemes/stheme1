@@ -1,0 +1,64 @@
+alias do_fmt {
+^fset format_381 $$G you are now an IrcOp
+^fset format_391 $$G %cerror%K!%C$$1 %K(%wchannel is full %K(%W+%wl%K))
+^fset format_443 $$G %cerror%K!%C$$1 %K(%wchannel is full %K(%W+%wl%K))
+^fset format_471 $$G %cerror%K!%C$$1 %K(%wchannel is full %K(%W+%wl%K))
+^fset format_473 $$G %cerror%K!%C$$1 %K(%winvite only channel %K(%W+%wi%K))
+^fset format_474 $$G %cerror%K!%C$$1 %K(%wbanned from channel %K(%W+%wb%K))
+^fset format_475 $$G %cerror%K!%C$$1 %K(%wbad channel key %K(%W+%wk%K))
+^fset format_476 $$G %cerror%K!%C$$1 %K(%wyou aren't an op %K(%W-%wo%K))
+
+^fset format_bwall %c[%nos%W/%nwall%K!%n$$1%K(%B$2%K)%c]%n $$4-
+^fset format_channel_signoff $$G %csignoff%K!%C$$1 %K(%n$4-%K)
+^fset format_ctcp $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3
+^fset format_ctcp_cloak $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3 %K(%ncloak%K)
+^fset format_ctcp_cloak_func $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3 %K(%ncloak%K)
+^fset format_ctcp_cloak_func_user $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %Cyou
+^fset format_ctcp_cloak_unknown $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3 %K(%ncloak%W+%nunknown%K)
+^fset format_ctcp_cloak_unknown_user $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3 %K(%ncloak%W+%nunknown%K)
+^fset format_ctcp_cloak_user $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %Cyou %K(%ncloak%K)
+^fset format_ctcp_func $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3
+^fset format_ctcp_func_user $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %Cyou
+^fset format_ctcp_unknown $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3 %K(%nunknown%K)
+^fset format_ctcp_unknown_user $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %C$$3 %K(%nunknown%K)
+^fset format_ctcp_user $$G %cctcp%K!%C$$tolower($4-) %K(%w$1%K[%c$2%K])%n to %Cyou
+^fset format_ctcp_reply $$G %creply%K!%C$$tolower($3) %Kë %C$$1 %K(%n$4-%K)
+
+^fset format_dcc_chat %K[%mdcc%K!%M$$1%K] %n$$3-
+
+^fset format_invite $$G %c$$1%n invites you to %C$$2-
+^fset format_invite_user $$G inviting %c$$1%n to %C$$2-
+
+^fset format_join $$G %cjoin%K!%C$$3 %K(%C$1%K!%c$2%K)
+^fset format_kick $$G %ckick%K!%C$$2 %Kë %C$$3 %K(%n$4-%K) %nby %W$$1
+^fset format_kick_user $$G %ckick%K!%C$$2 %Kë %CYou %K(%n$4-%K) %nby %W$$1
+^fset format_leave $$G %cleave%K!%C$$3 %K(%c$1%K)
+
+^fset format_mail $$G %Cyou have new mail
+
+^fset format_mode $$G %cmode%K!%C$$3 %K(%n$4-%K)%n by %W$$1
+^fset format_smode $$G %cmode%K!%C$$3 %K(%n$4-%K)%n by %W$$1
+^fset format_mode_channel $$G %cmode%K!%C$$3 %K(%n$4-%K)%n by %W$$1
+
+^fset format_msglog [$$[8]0] [$$1] ë <$$2> $$3-
+
+^fset format_nickname $$G %cnick%K!%C$$1 %K(%nto%K: %W$3%K)
+^fset format_nickname_other $$G %cnick%K!%C$$1 %K(%nto%K: %W$4%K)
+^fset format_nickname_user $$G %cnick%K!%C$$1 %K(%nto%K: %W$3%K)
+
+^fset format_notice %b-%B$$1%b-%n $$3-
+
+^fset format_send_away [away, $$(awyrsn) (l!$tolower($msglog))] [os/bx]
+^fset format_send_dcc_chat %bð%K[%B$$1%K]%bð%n $$2-
+^fset format_signoff $$G %csignoff%K!%C$$1 %K(%n$3-%K)
+
+^fset format_topic $$G %ctopic for %C$$1%K:%n $$2-
+^fset format_topic_change $$G %ctopic%K!%C$$2 %K(%n$3-%K)%n by %W$$1
+^fset format_topic_setby $$G %cset by%K: %W$$2%K (%n$stime($3)%K)
+^fset format_topic_unset $$G %ctopic unset by %W$$1%c on %C$$2
+
+^fset format_usage $$G %Wu%nsage%K:%n /$$0  $$1-
+
+^fset format_usermode $$G %cmode%K!%C$$3 %K(%n$4-%K)%n by %W$$1
+}
+do_fmt

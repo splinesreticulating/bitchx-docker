@@ -1,0 +1,28 @@
+
+alias stat8 {
+^set status_no_repeat on
+^fset format_status $0-
+^fset format_status1 $0-
+^fset format_status2 $0-
+^fset format_status3 $0-
+^set status_format1 $(cl)$(sb6)зд[$(sb4)%*%@%=$(sb3)%N%#$(sb6)]д%Q$(sb6)- %A %> $(sb6)д[$(sb3)%S$(sb6)]д[$(sb3)lag %L$(sb6)]д©
+^set status_format2 $(cl)$(sb3)цд[%C%+$(sb3)]д%! $(sb3)- %> д[$(sb6)win %R$(sb3)]д%F$(sb3)д[$(sb6)time %T$(sb3)]ды
+^set status_umode $(sb4)<$(sb6)+%#$(sb4)>
+^set status_users $(sb3)[$(sb6)ops$(sb4)<$(sb6)%!$(sb4)> $(sb6)non$(sb4)<$(sb6)%!$(sb4)>$(sb3)]
+^set status_clock %T
+^set status_lag %L
+^set status_channel %C
+^set status_mode $(sb4)<$(sb6)+%+$(sb4)>
+^set status_chanop @
+^set status_oper *
+^set status_voice +
+^set status_away $(sb3)away$(sb4)<$(sb6)%A$(sb4)>
+^set status_server %S
+^set status_notify $(sb3)[$(sb6)act %F$(sb3)]
+^set status_query $(sb6)[$(sb3)q %Q$(sb6)]
+^set status_format3 $(cl)$(sb6)[$(sb3)topic$(sb6)<$(sb4)%C$(sb6)>]$(cl) %- %> 
+^set input_prompt $(sb4)юд[ 
+}
+
+stat8
+wsetupdate

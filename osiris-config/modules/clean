@@ -1,0 +1,79 @@
+
+alias clean {
+   if ([$mirck]==[on]&&[$pirchk]==[on]&&[$virck]==[on]) {
+    echo $G cleaning up $(hwht)$C$(cl) from mIRC/PIRCH/ViRC lamers
+    do ver
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*mIRC* $*)) {do k $0 mIRC lamer, tell K Mardam Bey i said hi!}
+    if (pattern(*PIRCH* $*)) {do k $0 PIRCH lamer, tell Polargeek i said hi!}
+    if (pattern(*ViRC* $*)) {do k $0 ViRC lamer, tell Megalith i said hi!}
+    }}
+   if ([$mirck]==[on]&&[$pirchk]==[on]&&[$virck]==[off]) {
+    echo $G cleaning up $(hwht)$C$(cl) from mIRC/PIRCH lamers
+    do ver
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*mIRC* $*)) {do k $0 mIRC lamer, tell K Mardam Bey i said hi!}
+    if (pattern(*PIRCH* $*)) {do k $0 PIRCH lamer, tell Polargeek i said hi!}
+    }}
+   if ([$mirck]==[on]&&[$pirchk]==[off]&&[$virck]==[on]) {
+    echo $G cleaning up $(hwht)$C$(cl) from mIRC/ViRC lamers
+    do ver
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*mIRC* $*)) {do k $0 mIRC lamer, tell K Mardam Bey i said hi!}
+    if (pattern(*ViRC* $*)) {do k $0 ViRC lamer, tell Megalith i said hi!}
+    }}
+   if ([$mirck]==[on]&&[$pirchk]==[off]&&[$virck]==[off]) {
+    echo $G cleaning up $(hwht)$C$(cl) from mIRC lamers
+    do ver
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*mIRC* $*)) {do k $0 mIRC lamer, tell K Mardam Bey i said hi!}
+    }}
+   if ([$mirck]==[off]&&[$pirchk]==[on]&&[$virck]==[off]) {
+    echo $G cleaning up $(hwht)$C$(cl) from PIRCH lamers
+    do ver
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*PIRCH* $*)) {do k $0 PIRCH lamer, tell Polargeek i said hi!}
+    }}
+   if ([$mirck]==[off]&&[$pirchk]==[on]&&[$virck]==[on]) {
+    echo $G cleaning up $(hwht)$C$(cl) from PIRCH/ViRC lamers
+    do ver
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*PIRCH* $*)) {do k $0 PIRCH lamer, tell Polargeek i said hi!}
+    if (pattern(*ViRC* $*)) {do k $0 ViRC lamer, tell Megalith i said hi!}
+    }}
+   if ([$mirck]==[off]&&[$pirchk]==[off]&&[$virck]==[on]) {
+    ^on ^ctcp_reply "% VERSION *" if  ([$ischanop($0 $C)]!=[1]) {
+    if (pattern(*ViRC* $*)) {do k $0 ViRC lamer, tell Megalith i said hi!}
+    }}
+   if ([$mirck]==[off]&&[$pirchk]==[off]&&[$virck]==[off]) {
+    echo $G you dont have mIRC/PIRCH/ViRC kick turned on =)
+    }
+   ^timer 20 ^on ctcp_reply -"% VERSION *"
+}
+
+alias mirck {
+   if ([$0]) {
+   @mirck=[$0]
+   echo $G mIRC kick is now $(hwht)$mirck
+}{
+   ^ohelp mirck
+ }
+}
+
+alias pirchk {
+   if ([$0]) {
+   @pirchk=[$0]
+   echo $G PIRCH kick is now $(hwht)$pirchk
+}{
+   ^ohelp pirchk
+ }
+}
+
+alias virck {
+   if ([$0]) {
+   @virck=[$0]
+   echo $G ViRC kick is now $(hwht)$virck
+}{
+   ^ohelp virck
+ }
+}

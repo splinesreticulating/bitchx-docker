@@ -1,0 +1,26 @@
+alias asayscan1 #
+alias asayscan2 {
+echo    $(sc4)Ú$(sc3)ÄÄÄ$(sc5)ú                                                             ú$(sc3)ÄÄÄ$(sc4)¿
+}
+alias asayscan3 {
+echo    $(sc5)³   $(sc3)[$fix.scn($[10]0)] [$fix.scn($[10]1)] [$fix.scn($[10]2)] [$fix.scn($[10]3)] [$fix.scn($[10]4)]  $(sc5)³
+}
+alias asayscan4 {
+echo    $(sc4)À$(sc3)Ä-Ä-$(sc4)ÄÄÄ                                                       ÄÄÄ$(sc3)--Ä-$(sc4)Ù
+}
+alias asayscan5 #
+alias asayscan1nick {
+echo    $(sc5)³   $(sc3)[$fix.scn($pad(10))] [$fix.scn($pad(10))] [$fix.scn($[10]0)] [$fix.scn($pad(10))] [$fix.scn($pad(10))]  $(sc5)³
+}
+alias asayscan2nicks {
+echo    $(sc5)³   $(sc3)[$fix.scn($pad(10))] [$fix.scn($[10]0)] [$fix.scn($pad(10))] [$fix.scn($[10]1)] [$fix.scn($pad(10))]  $(sc5)³
+}
+alias asayscan3nicks {
+echo    $(sc5)³   $(sc3)[$fix.scn($pad(10))] [$fix.scn($[10]0)] [$fix.scn($[10]1)] [$fix.scn($[10]2)] [$fix.scn($pad(10))]  $(sc5)³ 
+}
+alias asayscan4nicks {
+echo    $(sc5)³   $(sc3)[$fix.scn($[10]0)] [$fix.scn($[10]1)] [$fix.scn($pad(10))] [$fix.scn($[10]2)] [$fix.scn($[10]3)]  $(sc5)³
+}
+@ scc1 = sc4
+@ scc2 = sc3
+@ scc3 = sc3

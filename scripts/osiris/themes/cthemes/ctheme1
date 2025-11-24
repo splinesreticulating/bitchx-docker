@@ -1,0 +1,12 @@
+^load ~/osiris/formats/away/away7
+^load ~/osiris/formats/echo/echo21
+^load ~/osiris/formats/fsets/fsets2
+^load ~/osiris/formats/msgs/msgs6
+^load ~/osiris/formats/ncomp/ncomp11
+^load ~/osiris/formats/nots/nots2
+^load ~/osiris/formats/pub/pub2
+^load ~/osiris/formats/scan/scan5
+^load ~/osiris/formats/snots/snots2
+^load ~/osiris/formats/spub/spub2
+^load ~/osiris/formats/stat/stat6
+^load ~/osiris/formats/whois/whois2

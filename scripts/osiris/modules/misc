@@ -1,0 +1,98 @@
+alias autoaway {
+   if ([$0]) {
+   if ([$0]==[on]) {
+   @aaway=[on]
+   @aa=[$1]
+   ^on -idle * if ([$0]!=[0]) { if ([$0]==[$aa]&&![$awaystat]==[1]) {away $aa minute autoaway;echo $G you have been idle for $aa minutes, autoaway engaged;//away $aa minute autoaway}}
+   echo $G autoaway is now$(hblk):$(cl) $aaway $(hblk)\($(cl)after $aa minutes$(hblk)\)
+  }
+   if ([$0]==[off]) {
+   @aa=[0]
+   ^on -idle -
+   @aaway=[off]
+   echo $G autoaway is now$(hblk):$(cl) $aaway
+  }}
+ {
+   ^ohelp autoaway
+ }
+}
+
+alias autoget {
+   if ([$0]) {
+   if ([$0]==[on]) {
+   @aget=[on]
+   ^set dcc_autoget $aget
+   echo $G dcc autoget is now$(hblk):$(cl) $aget
+ }
+   if ([$0]==[off]) {
+   @aget=[off]
+   ^set dcc_autoget $aget
+   echo $G dcc autoget is now$(hblk):$(cl) $aget
+ }
+ }{
+   ^ohelp autoget
+ }
+}
+
+alias btype {
+   if ([$0]) {
+   ^bantype $0
+   if ([$0]==[n]) {echo $G ban type is now$(hblk):$(cl) normal;@btype=[normal]}
+   if ([$0]==[b]) {echo $G ban type is now$(hblk):$(cl) better;@btype=[better]}
+   if ([$0]==[h]) {echo $G ban type is now$(hblk):$(cl) host;@btype=[host]}
+   if ([$0]==[d]) {echo $G ban type is now$(hblk):$(cl) domain;@btype=[domain]}
+   if ([$0]==[s]) {echo $G ban type is now$(hblk):$(cl) screw;@btype=[screw]}
+ }{
+   ^ohelp btype
+ }
+}
+
+alias cinfo {
+   if ([$0-]) {
+   @cinfo=[$0-]
+   ^set client_information  $(cinfo)
+   echo $G client_information now set to$(hblk):$(cl) $(cinfo)
+ }{
+   ^ohelp cinfo
+ }
+}
+
+alias email {
+   if ([$0]) {
+   @email=[$0]
+   echo $G email is now set to$(hblk):$(cl) $email
+}{
+   ^ohelp email
+ }
+}
+
+alias mlog {
+   if ([$0]) {
+   @awayl=[$0]
+   echo $G message logging is now$(hblk)$(cl) $awayl
+ }{
+   ^ohelp mlog
+ }
+}
+
+alias nhp {
+   if ([$0]) {
+   @nhp=[$0]
+   if ([$0]==[on]) {^set hacking 1}
+   if ([$0]==[off]) {^set hacking 0}
+   echo $G nethack protection is now$(hblk):$(cl) $nhp
+ }{
+   ^ohelp nhp
+ }
+}
+
+alias realname {
+   if ([$0-]) {
+   @realname=[$0-]
+   ^set realname $cparse("$(realname)")
+   echo $G realname now set to$(hblk):$(cl) $cparse("$realname")
+   input "reconnect to make changes take affect? [y/N] " if ([$0]==[y]) {^reconnect}{echo $G not reconnecting. realname not changed.}
+ }{ 
+   ^ohelp realname
+ }
+}

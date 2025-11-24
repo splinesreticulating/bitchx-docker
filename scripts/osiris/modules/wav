@@ -1,0 +1,28 @@
+
+@wl=[$(blu)\($(hwht)o$(cl)s$(hblu)!$(hwht)w$(cl)av$(blu)\)$(cl)]
+
+alias wav {
+  if ([$1]) {
+  @wavfile=[$(wavfdir)/$1]
+  if ([$0]==[play]) { if (fexist($(wavfile)) != -1) {^eval exec $(wavdir)/$(wavplay) $(wavfile) 2> /dev/null;echo $G $wl now playing wav $(hblk)[$(cl)$(wavfile)$(hblk)]}{echo $G $wl file does not exist! $(hblk)[$(cl)$(wavfile)$(hblk)]}}
+ }
+  if (![$1]) {
+  if ([$0]==[stop]) {^eval exec killall -9 $(wavplay);echo $G $wl stopped $(hblk)[$(cl)$(wavfile)$(hblk)]}
+  if ([$0]==[play]) {^ohelp wav}
+  if ([$0]==[list]) {^wav.list}
+ }
+  if (![$0]) {^ohelp wav}
+}
+
+alias wav.list {
+     ^local wav.
+     echo $cparse("%KÚ´ %Bw %ba %Kv  %Bl %bi s %Kt ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ-")
+     echo $cparse("%K³")
+        fe ($glob($(wavfdir)\/*.wav)) mm {
+          @ wav.b = rindex(/ $mm)
+          @ wav.f = mid(${wav.b+1} $strlen($mm) $mm)
+     echo $cparse("%K³%n %c$wav.f")
+    }
+     echo $cparse("%K³")
+     echo $cparse("%KÀ´ %Bw %ba %Kv  %Bl %bi s %Kt ÃÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ-")
+}

@@ -1,0 +1,24 @@
+alias asayscan1 #
+alias asayscan2 {
+            echo $G $(hblk)[$(hgrn)Users$(hblk)\($(grn)$0$(hblk):$(grn)$4$(hblk)\)]
+}
+alias asayscan3 {
+            echo $(hblk)[$fix.scn($[10]0)] [$fix.scn($[10]1)] [$fix.scn($[10]2)] [$fix.scn($[10]3)] [$fix.scn($[10]4)]
+}
+alias asayscan4 #
+alias asayscan5 #
+alias asayscan1nick {
+echo $(hblk)[$fix.scn($pad(10))] [$fix.scn($pad(10))] [$fix.scn($[10]0)] [$fix.scn($pad(10))] [$fix.scn($pad(10))]
+}
+alias asayscan2nicks {
+echo $(hblk)[$fix.scn($pad(10))] [$fix.scn($[10]0)] [$fix.scn($pad(10))] [$fix.scn($[10]1)] [$fix.scn($pad(10))]
+}
+alias asayscan3nicks {
+echo $(hblk)[$fix.scn($pad(10))] [$fix.scn($[10]0)] [$fix.scn($[10]1)] [$fix.scn($[10]2)] [$fix.scn($pad(10))]
+}
+alias asayscan4nicks {
+echo $(hblk)[$fix.scn($[10]0)] [$fix.scn($[10]1)] [$fix.scn($pad(10))] [$fix.scn($[10]2)] [$fix.scn($[10]3)]
+}
+@ scc1 = hcyn
+@ scc2 = hblu
+@ scc3 = hblk

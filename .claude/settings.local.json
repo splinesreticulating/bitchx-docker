@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod:*)",
+      "Bash(docker cp:*)",
+      "Bash(docker exec:*)",
+      "Bash(docker compose:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "Bash(docker run:*)",
+      "Bash(docker image inspect:*)",
+      "Bash(cat:*)",
+      "WebFetch(domain:linux.die.net)",
+      "WebFetch(domain:man.cx)",
+      "Bash(git clone:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

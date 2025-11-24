@@ -1,0 +1,37 @@
+^SET INPUT_PROMPT [$C] 
+
+^SET STATUS_FORMAT [0;44;36m [[1;37m%T[0;44;36m][%@[0;44;37m%N%#%A[0;44;36m]%M [0;44;36m[%=%C%+%W[0;44;36m] %Q %H%B%F 
+^SET STATUS_FORMAT1 [0;44;36m [[1;37m%T[0;44;36m][[1;37m%@[0;44;37m%N%#%A[0;44;36m]%M [0;44;36m[%=%C%+%W[0;44;36m] %Q %H%B%F 
+^SET STATUS_FORMAT2 [0;44;36m %L %! %K %>%D %J[%u:%a:%f:%b:%h]
+^SET STATUS_FORMAT3 BitchX by panasync 
+^SET STATUS_AWAY  [0;44;36m([1;32mzZzZ[1;37m %A[0;44;36m)[0;44;37m
+^SET STATUS_CHANNEL [0;44;37m%C
+^SET STATUS_CHANOP @
+^SET STATUS_CLOCK %T
+^SET STATUS_HOLD  -- more --
+^SET STATUS_HOLD_LINES  [0;44;36m([1;37m%B[0;44m)[0;44;37m
+^SET STATUS_INSERT 
+^SET STATUS_LAG [0;44;36m[[0;44;37mLag [1;37m%L[0;44;36m]
+^SET STATUS_MODE [1;37m([0;44;36m+[0;44;37m%+[1;37m)
+^SET STATUS_MAIL [0;44;36m[[0;44;37mMail: [1;37m%M[0;44;36m]
+^SET STATUS_MSGCOUNT  Aw[0;44;36m[[1;37m%^[0;44;36m]
+^SET STATUS_NICK %N
+^SET STATUS_NOTIFY  [0;44;36m[[37mAct: [1;37m%F[0;44;36m]
+^SET STATUS_OPER [1;31m*[0;44;37m
+^SET STATUS_VOICE [1;32m+[0;44;37m
+^SET STATUS_OVERWRITE (overtype) 
+^SET STATUS_QUERY  [0;44;36m[[37mQuery: [1;37m%Q[0;44;36m]
+^SET STATUS_SERVER  via %S
+^SET STATUS_TOPIC %-
+^SET STATUS_UMODE [1;37m([0;44;36m+[37m%#[1;37m)
+^SET STATUS_USER  * type /help for help 
+^SET STATUS_DCCCOUNT  [DCC  gets/%& sends/%&]
+^SET STATUS_CDCCCOUNT [CDCC gets/%| offer/%|]
+^SET STATUS_OPER_KILLS [0;44;36m[[37mnk[36m/[1;37m%K [0;44mok[36m/[1;37m%K[0;44;36m]
+^SET STATUS_USERS [0;44;36m[[37mO[36m/[1;37m%! [0;44mN[36m/[1;37m%! [0;44mI[36m/[1;37m%! [0;44mV[36m/[1;37m%! [0;44mF[36m/[1;37m%![0;44;36m]
+^SET STATUS_CPU_SAVER  (%J)
+^SET STATUS_WINDOW [1;44;33m^^^^^^^^[0;44;37m
+^SET STATUS_FLAG 
+^SET STATUS_SCROLLBACK  (Scroll)
+
+^wsetupdate

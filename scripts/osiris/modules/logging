@@ -1,0 +1,38 @@
+alias remlog {
+	input "remove log? [y/N]: " if ([$0]==[y])
+	{@unlink($loadpath$olog) 
+	echo $G your msglog has been removed.
+}}
+	
+
+alias play readlog
+alias readlog {
+	more $loadpath$olog
+	echo $G type /remlog to remove log}
+
+
+::logging hooks
+
+on #-ctcp 2 " * " if ([$ctcpl]==[ON]&&[$awayl]==[ON]&&[$awaystat]==[1]) {
+	@recvtime=[$strftime(%I:%M %p)]
+	@savel = open(${loadpath}osiris.log W T)                              
+        @write($savel $(c6)[$(c2)CTCP$(c6)\($(cl)$recvtime$(c6)\)] $(c4)$2 $3- ${c1}$0${hblk}\(${c2}$userhost()${hblk}\) :> $(cyn)$1) 
+	@close($savel)}
+
+on #-msg 4 " * " if ([$msgl]==[ON]&&[$awayl]==[ON]&&[$awaystat]==[1]) {
+	@recvtime=[$strftime(%I:%M %p)]
+	@savel = open(${loadpath}osiris.log W T)
+	@write($savel $(c6)[$(c2)MSG$(c6)\($(cl)$recvtime$(c6)\)] ${c1}$0${hblk}\(${c2}$userhost()${hblk}\) ${cl}$1-)
+        @close($savel)}
+
+on #-dcc_request 6 " * " if ([$dccl]==[ON]&&[$awayl]==[ON]&&[$awaystat]==[1]) {
+	@recvtime=[$strftime(%I:%M %p)]
+        @savel = open(${loadpath}osiris.log W T) 
+        @write($savel $(c6)[$(c2)DCC$(c6)\($(cl)$recvtime$(c6)\)] ${hwht}$1 ${hwht}request from $0 ${hblk}[${c2}$userhost()${hblk}])
+        @close($savel)}
+
+on #-notice 7 " * " if ([$notl]==[ON]&&[$awayl]==[ON]&&[$awaystat]==[1]) {
+	@recvtime=[$strftime(%I:%M %p)]
+	@savel = open(${loadpath}osiris.log W T)
+	@write($savel $(c6)[$(c2)NOTICE$(c6)\($(cl)$recvtime$(c6)\)] ${c1}$0 ${hblk}\(${c2}$userhost()${hblk}\) ${cl}$1-) 
+	@close($savel)}

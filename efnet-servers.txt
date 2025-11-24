@@ -1,0 +1,30 @@
+# EFnet Server List (Updated 2025)
+# Only verified active EFnet servers
+# Prioritized for Oracle Cloud VPS (US-based)
+
+# Round-robin (auto-selects best server)
+irc.efnet.org
+
+# US Servers (highest priority for Oracle Cloud)
+irc.choopa.net      # New York, NY (~2,100 users)
+irc.deft.com        # Chicago, IL (~1,286 users)
+
+# European Servers (good latency from US)
+irc.efnet.nl        # Amsterdam, Netherlands
+irc.underworld.no   # Oslo, Norway (~1,942 users)
+irc.homelien.no     # Oslo, Norway (~1,152 users)
+efnet.port80.se     # Stockholm, Sweden (~2,858 users)
+efnet.deic.eu       # Lyngby, Denmark (~2,658 users)
+irc.efnet.fr        # Paris, France (~324 users)
+efnet.portlane.se   # Stockholm, Sweden (~1,211 users)
+
+# Alternative ports if 6667 is blocked
+# Most EFnet servers support: 6660-6669, 7000
+
+# SSL/TLS ports (if supported)
+# 6697, 9999 (on some servers)
+
+# Sources:
+# - https://netsplit.de/servers/?net=EFnet
+# - http://www.efnet.org/?module=servers
+# - http://stats.efnet.org/servers/

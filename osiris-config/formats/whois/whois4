@@ -1,0 +1,10 @@
+do fset format_whois_header
+do fset format_whois_nick $$0 $$1@$$2 $$3
+do fset format_whois_name $$0-
+do fset format_whois_channels $$0-
+do fset format_whois_server $$0 ($$1-)
+do fset format_whois_away $$1-
+do fset format_whois_oper $$0 is *not* an ereet packet warrior!
+do fset format_whois_idle $$0h $$1m $$2s
+do fset format_whois_footer
+

@@ -1,0 +1,27 @@
+^on ^cdcc_prepack * {
+        switch ($0) {
+                (PRIVMSG) {send     [os/cdcc % $3 pack${[$3]!=1?[s]:} offered \($fix.size($12)\)]}
+                (NOTICE) {notice $1     [os/cdcc % $3 pack${[$3]!=1?[s]:} offered \($fix.size($12)\)]}
+ }
+}
+
+^on ^cdcc_pack * {
+        switch ($0) {
+                (PRIVMSG) {send Þ$[-2]2ÝÄ\( $5 get${[$5]!=1?[s]:} - $fix.size($4) \)Ä> $6-}
+                (NOTICE) {notice $1 Þ$[-2]2ÝÄ\( $5 get${[$5]!=1?[s]:} - $fix.size($4) \)Ä> $6-}
+ }
+}
+
+^on ^cdcc_note * {
+        switch ($0) {
+                (PRIVMSG) {send  ÀÄÄÄ>  $2-}
+                (NOTICE) {notice $1  ÀÄÄÄ>  $2-}
+ }
+}
+
+^on ^cdcc_postpack * {
+        switch ($0) {
+                (PRIVMSG) {send     [$fix.size($9) sent, record $fix.size($8)/s, $4/$5 open]}
+                (NOTICE) {notice $1     [$fix.size($9) sent, record $fix.size($8)/s, $4/$5 open]}
+ }
+}

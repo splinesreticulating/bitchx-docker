@@ -1,0 +1,20 @@
+services:
+  bitchx:
+    build:
+      context: .
+      args:
+        USER_ID: ${UID}
+        GROUP_ID: ${GID}
+    image: bitchx:local
+    container_name: bitchx_session
+    stdin_open: true
+    tty: true
+    environment:
+      - TERM=xterm-256color
+    user: "${UID}:${GID}"
+    volumes:
+      - ./config:/home/mute/.BitchX
+      - ./osiris-config:/home/mute/osiris
+      - ./config/.ircrc:/home/mute/.ircrc
+      - ./launch-bx.sh:/home/mute/launch-bx.sh
+    command: ["tail", "-f", "/dev/null"]

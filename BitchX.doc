@@ -1,0 +1,31 @@
+Launching BitchX with osiris script...
+BitchX - Based on EPIC Software Labs epic ircII (1998).
+Version (BitchX-1.3-git) -- Date (20210425).
+Process [8]
+Unknown flag: -u
+Usage: BitchX [switches] [nickname] [server list]
+  The [nickname] can be at most 15 characters long
+  The [server list] is a whitespace separate list of server name
+  The [switches] may be any or all of the following
+   -H <hostname>	uses the virtual hostname if possible
+   -N do not auto-connect to the first server
+   -A do not display the startup ansi
+   -c <channel>	joins <channel> on startup. don't forget to escape the # using \
+   -b		load .bitchxrc  or .ircrc after connecting to a server
+   -p <port>	default server connection port (usually 6667)
+   -f		your terminal uses flow controls (^S/^Q), so BitchX shouldn't
+   -F		your terminal doesn't use flow control (default)
+   -d		runs BitchX in "dumb" terminal mode
+   -q		does not load ~/.ircrc
+   -r file	load file as list of servers
+   -n nickname	nickname to use
+   -a		adds default servers and command line servers to server list
+   -x		runs BitchX in "debug" mode
+   -Z		use NAT address when doing dcc.
+   -P		toggle check pid.nickname for running program.
+   -v		tells you about the client's version
+   -s		servers specified are SSL.
+   -i		ignores the autojoin list entries.
+   -l <file>	loads <file> in place of your .ircrc
+   -L <file>	loads <file> in place of your .ircrc and expands $ expandos
+   -B		force BitchX to fork and return you to shell. pid check on.

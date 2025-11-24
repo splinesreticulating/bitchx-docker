@@ -1,0 +1,14 @@
+alias k if ([$0]) {
+         if ([$1]) {
+	//kick $C $0 $kickr $1-
+	}{ 
+	//kick $C $0 $kickr WOMP}
+}
+alias bk kb
+alias kb if ([$0]) {
+         if ([$1]) {
+	//bk $C $0 $bkickr $1-
+	}{ 
+	//bk $C $0 $bkickr WOMP}
+}	 
+

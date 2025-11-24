@@ -1,0 +1,43 @@
+# fade alias(basically the base for this) was written by shade@!#!@
+# Thank you shade!#&*()
+alias fade {
+  @ :fadecols = split(, $0)
+  fe ($1-) xx {
+    @ :len1 = @xx / 3, :len2 = (@xx / 3) + (@xx % 3)
+    @ function_return #= @xx > 2 ? cparse("$word(0 $fadecols)$left($len1 $xx)$word(1 $fadecols)$mid($len1 $len2 $xx)$word(2 $fadecols)$right($len1 $xx)%n ") : cparse("$word(1 $fadecols)$xx%n ")
+    @ fadecols = revw($fadecols)}}
+
+alias fsay if (!1) { ^ohelp fsay }{
+switch ($0) {
+	(-c) {say $fade(%C,%c,%K $1-)}
+	(-p) {say $fade(%M,%m,%K $1-)}
+	(-b) {say $fade(%B,%b,%K $1-)}
+	(-r) {say $fade(%R,%r,%K $1-)}
+	(-g) {say $fade(%G,%g,%K $1-)}
+	(-y) {say $fade(%Y,%y,%K $1-)}
+	(-k) {say $fade(%K,%w,%W $1-)}  
+	(-a) {say $annoy($1-)}
+	(-e) {say $eleet($1-)}
+	(-u) {say $cool($1-)}
+	(-?) {^ohelp fsay}
+	(*) {^ohelp fsay}
+	}
+}
+
+alias fhelp {
+echo $G usage$(hblk):$(cl) /fsay $(hblk)[$(cl)-flag$(hblk)] [$(cl)text$(hblk)]
+echo $G flags$(hblk):$(cl)
+echo $G -c $(hblk):$(cl)cyan fade
+echo $G -p $(hblk):$(cl)magenta/purple fade
+echo $G -b $(hblk):$(cl)blue fade
+echo $G -r $(hblk):$(cl)red fade
+echo $G -g $(hblk):$(cl)green fade
+echo $G -k $(hblk):$(cl)black and white fade
+echo $G -a $(hblk):$(cl)random annoyance fade
+echo $G -e $(hblk):$(cl)an eleet parser
+echo $G -u $(hblk):$(cl)cool up and down shit!
+echo $G -? $(hblk):$(cl)get help
+}
+
+
+# .:. cl '98

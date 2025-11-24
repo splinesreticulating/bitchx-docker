@@ -1,0 +1,26 @@
+
+alias stat4 {
+^set status_no_repeat on
+^fset format_status $0-
+^fset format_status1 $0-
+^fset format_status2 $0-
+^fset format_status3 $0-
+^set status_format1 $(cl) $(sb2)Ú$(sb1)ÄÄ$(sb6)Â$(sb1)Â $(sb6)%@%*%=$(sb3)%N%# $(sb3)%C%+ %! %> $(sb2)-$(sb1)ÄÄ$(sb6)Ä-$(sb1)- $(sb3)time$(sb6)\($(sb4)%T$(sb6)\) $(sb6)-$(sb1)Ä$(sb2)¿
+^set status_format2 $(cl)$(sb2)Ú$(sb1)³Ä$(sb6)Ä$(sb1)³$(sb2)Ù $(sb3)win$(sb6)\($(sb4)%R$(sb6)\) . %L %A %> %S <$(sb1)-Ù
+^set status_format3 $(cl)$(sb1)topic$(sb6)\($(sb2)%C$(sb6)\)$(cl) %- %>
+^set status_umode $(sb6)\($(sb7)+$(sb4)%#$(sb6)\)
+^set status_users $(sb6)[$(sb3)o$(sb6)\($(sb4)%!$(sb6)\) $(sb3)n$(sb6)\($(sb4)%!$(sb6)\)]
+^set status_lag $(sb3)lag$(sb6)\($(sb4)%L$(sb6)\)
+^set status_mode $(sb6)\($(sb7)+$(sb4)%+$(sb6)\)
+^set status_clock %T
+^set status_channel %C
+^set status_chanop @
+^set status_oper *
+^set status_server $(sb3)server$(sb6)\($(sb4)%S$(sb6)\)
+^set status_voice +
+^set status_away $(sb6)[$(sb3)away$(sb6)]
+^set input_prompt $(sb1)À$(sb6)Á$(sb1)ÄÄ$(sb2)Ù$(cl) 
+}
+
+stat4
+wsetupdate

@@ -1,0 +1,40 @@
+alias fix.scn {
+        if ([$[1]0] == [@]) {
+                @ nick = right(${strlen($0) - 1} $0)
+                @ function_return = [$(hc1)@$(lc1)$[9]nick$(hc2)]
+        }{
+        if ([$[1]0] == [+]) {
+                @ nick = right(${strlen($0) - 1} $0)
+                @ function_return = [$(hc1)+$(lc1)$[9]nick$(hc2)]
+        }{
+                @ function_return = [ $(lc1)$[9]0$(hc2)]
+        }}
+}
+
+alias scan {
+        if ([$0]) {@ chan = [$0]}{@ chan = [$C]}
+        @ voc = 0;@ ops = 0;@ non = 0
+        fe ($chanusers($chan)) nick {
+                if (ischanop($nick $chan) == 1) {
+                        @ push(nicks.ops @$nick)
+                        @ ops = ops + 1
+                }{
+                if (isvoice($chan $nick) == 1) {
+                        @ push(nicks.voc +$nick)
+                        @ voc = voc + 1
+                }{
+                        @ push(nicks.non $nick);@ non = non + 1
+                }}
+            }
+            @ nicks = nicks.ops##[ ]##nicks.voc##[ ]##nicks.non
+            echo                              $(hc2)[$(lc2)users on $(hc3)$chan$(hc2)]
+            echo $(hc2)ÚÄÄ$(hc1)Ä$(hc2)ÄÄ$(lc1)ÄÄ$(hc2)Ä$(lc1)ÄÄÄÄÄ$(hc1)ÄÄÄ$(lc1)Ä$(hc1)ÄÄÄ$(lc1)Ä$(hc1)ÄÄÄÄÄÄÄÄÄÄ$(hc3)>       $(hc3)<$(hc1)ÄÄÄÄÄÄÄ$(lc1)Ä$(hc1)ÄÄÄ$(lc1)Ä$(hc1)ÄÄÄ$(lc1)ÄÄÄÄÄ$(hc2)Ä$(lc1)ÄÄ$(hc2)ÄÄ$(lc1)Ä$(hc2)ÄÄÄÄÄÄÄÄ¿
+            echo $(hc2)³  Ú$(lc1)Ä$(hc1)       $(hc3)<$(hc1)Ä$(lc1)Ä$(hc2)¿ Ú$(lc1)Ä$(hc1)       $(hc3)<$(hc1)Ä$(lc1)Ä$(hc2)¿ Ú$(lc1)Ä$(hc1)       $(hc3)<$(hc1)Ä$(lc1)Ä$(hc2)¿ Ú$(lc1)Ä$(hc1)       $(hc3)<$(hc1)Ä$(lc1)Ä$(hc2)¿ Ú$(lc1)Ä$(hc1)       $(hc3)<$(hc1)Ä$(lc1)Ä$(hc2)¿   ³
+            fe ($nicks) n1 n2 n3 n4 n5 {
+              echo $(hc2)³  ³$fix.scn($[10]n1) ³ ³$fix.scn($[10]n2) ³ ³$fix.scn($[10]n3) ³ ³$fix.scn($[10]n4) ³ ³$fix.scn($[10]n5) ³   ³
+            }
+            echo $(hc2)³  À$(lc1)Ä$(hc1)Ä$(hc3)>      $(hc1)Ä$(lc1)Ä$(hc2)Ù À$(lc1)Ä$(hc1)Ä$(hc3)>      $(hc1)Ä$(lc1)Ä$(hc2)Ù À$(lc1)Ä$(hc1)Ä$(hc3)>      $(hc1)Ä$(lc1)Ä$(hc2)Ù À$(lc1)Ä$(hc1)Ä$(hc3)>      $(hc1)Ä$(lc1)Ä$(hc2)Ù À$(lc1)Ä$(hc1)Ä$(hc3)>      $(hc1)Ä$(lc1)Ä$(hc2)Ù   ³
+            echo $(hc2)ÀÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÙ
+           ^assign -nicks;^assign -nicks.ops;^assign -nicks.voc;^assign -nicks.non
+            ^assign -ops;^assign -voc;^assign -non;^assign -chan
+}

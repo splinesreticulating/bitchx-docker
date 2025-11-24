@@ -1,0 +1,28 @@
+
+alias stat9 {
+^set status_no_repeat on
+^fset format_status $0-
+^fset format_status1 $0-
+^fset format_status2 $0-
+^fset format_status3 $0-
+^set status_format1 $(cl)$(sb4)Ú$(sb3)Ä $(sb4)%*%@%=$(sb6)%N%# %Q %> %S %L $(sb6)Ä$(sb3)¿
+^set status_format2 $(cl)$(sb3)À$(sb6)Ä %C%+ %! %> $(sb6)win$(sb4)\($(sb3)%R$(sb4)\) %F %T $(sb3)Ä$(sb4)Ù
+^set status_umode $(sb4)\($(sb3)+%#$(sb4)\)
+^set status_users $(sb6)ops$(sb4)\($(sb3)%!$(sb4)\) $(sb6)non$(sb4)\($(sb3)%!$(sb4)\)
+^set status_clock $(sb6)time$(sb4)\($(sb3)%T$(sb4)\)
+^set status_lag $(sb6)lag$(sb4)\($(sb3)%L$(sb4)\)
+^set status_channel %C
+^set status_mode $(sb4)\(+$(sb3)%+$(sb4)\)
+^set status_chanop @
+^set status_oper *
+^set status_voice +
+^set status_away $(sb6)away$(sb4)\($(sb3)%A$(sb4)\)
+^set status_server $(sb6)server$(sb4)\($(sb3)%S$(sb4)\)
+^set status_notify $(sb6)act$(sb4)\($(sb3)%F$(sb4)\)
+^set status_query $(sb6)q$(sb4)\($(sb3)%Q$(sb4)\)
+^set status_format3 $(cl)$(sb3)topic$(sb6)\($(sb4)%C$(sb6)\)$(cl) %- %>
+^set input_prompt  
+}
+
+stat9
+wsetupdate

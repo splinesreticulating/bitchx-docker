@@ -1,0 +1,27 @@
+
+alias stat7 {
+^set status_no_repeat on
+^fset format_status $0-
+^fset format_status1 $0-
+^fset format_status2 $0-
+^fset format_status3 $0-
+^set status_format1 $(cl)$(sb6)ÚÄ\($(sb7)%*%@%=$(sb3)%N%#$(sb6)\)Ä\($(sb3)%C%+$(sb6)\)Ä-ú ú %A %> ú ú-Ä%Q$(sb6)Ä\($(sb4)w$(sb6)[$(sb2)%R$(sb6)]\)Ä¿
+^set status_format2 $(cl)$(sb6)ÀÄ\(%T$(sb6)\)Ä%!ÄÄÄÄÄÄÄÄÄÄÄÄÄÄ-ú ú %> ú ú-Ä%F$(sb6)Ä%L$(sb6)ÄÙ
+^set status_umode $(sb6)[$(sb2)+$(sb1)%#$(sb6)]
+^set status_users $(sb6)\($(sb2)+$(sb1)o$(sb6)[$(sb4)%!$(sb6)] $(sb2)-$(sb1)o$(sb6)[$(sb4)%!$(sb6)]\)
+^set status_clock $(sb2)t$(sb1)ime$(sb6)[$(sb4)%T$(sb6)]
+^set status_lag $(sb6)\($(sb2)l$(sb1)ag$(sb6)[$(sb4)%L$(sb6)]\)
+^set status_channel %C
+^set status_mode $(sb6)[$(sb2)+$(sb1)%+$(sb6)]
+^set status_chanop @
+^set status_oper *
+^set status_voice +
+^set status_away $(sb6)[$(sb2)a$(sb1)way$(sb6)]
+^set status_notify $(sb6)\($(sb2)a$(sb1)ct$(sb6)[$(sb4)%F$(sb6)]\)
+^set status_query $(sb6)\($(sb4)q$(sb6)[$(sb1)%Q$(sb6)\])
+^set status_format3 $(cl)$(sb6)\($(sb2)t$(sb1)opic$(sb6)[$(cl)%- %>$(sb6)]\)
+^set input_prompt $(sb6)[$(sb2)os$(sb6)]$(sb3)-$(sb4)Ä$(sb6)>$(sb7) 
+}
+
+stat7
+wsetupdate

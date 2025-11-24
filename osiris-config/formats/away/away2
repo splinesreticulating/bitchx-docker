@@ -1,0 +1,33 @@
+alias away {
+@awaystat=[1]
+  if ([$0]) {
+@amsg=[$0-]
+mme is detached: $(amsg) \(log!os.bx\)
+//away $amsg
+}
+{
+mme is detached: $(awaymsg) \(log!os.bx\)
+//away $awaymsg
+}
+@osta=[$time()]
+}
+
+alias back {
+@awaystat=[0]
+if (osta)
+{
+@gtime=[$tdiff2(${time() - osta})]
+if ([$0]) {
+@bmsg=[$0-]
+mme is back: $(bmsg) \($(gtime)\)
+}{
+mme is back: $(backmsg) \($(gtime)\)
+}
+^assign -osta
+//back
+if ([$awayl]==[on])
+{
+echo $G you are setback. /readlog to read msgs, /remlog to delete them.
+}
+}
+}

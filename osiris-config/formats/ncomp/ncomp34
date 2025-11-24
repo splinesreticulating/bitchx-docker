@@ -1,0 +1,3 @@
+^assign n.e +
+^fset format_nick_comp $0$(n.e)$1-
+^fset format_nick_comp_auto $0$(n.e)$1-

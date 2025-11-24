@@ -1,0 +1,26 @@
+:: youndrows action fix
+  on ^action * {
+       if (tolower($1) == [$N]) {
+             echo $G ${c2}$0${hblk}/${cl}$1${cl} $2-
+       } elsif (chanwin($tolower($1)) != [-1]) {
+             echo $G ${hwht}$0 ${cl}$2-
+         } {
+             echo $G ${hwht}$0${hblk}!${cl}$1 $2-
+         }
+ }
+
+on ^send_action "*" {
+        @sdesc1 = [$G ${cl}-> ${hwht}$0 ${c3}$N ${cl}$1-]  
+	@sdesc2 = [$G ${hwht}$N ${cl}$1-]
+	@sdesc3 = [$G ${hwht}$N${hblk}!${cl}$0 ${cl}$1-]
+	
+       
+               switch ( $0 ) {
+           
+            ( $C ) { echo $sdesc2 }
+            ( #* )  {}
+            ( * )  { echo $sdesc1} 
+	}
+      }
+
+::::::::::::::::::::

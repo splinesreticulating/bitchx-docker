@@ -1,0 +1,23 @@
+# Environment variables
+.env
+
+# BitchX runtime files
+config/.bitchxrc
+config/.ircservers
+config/.osiris_setup_complete
+
+# User-specific IRC configuration (keep template)
+# config/.ircrc
+
+# Logs
+*.log
+osiris-config/osiris.log
+
+# Docker volumes data
+config/*
+!config/.ircrc
+
+# Temporary files
+*.tmp
+*.swp
+*~

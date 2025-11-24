@@ -1,0 +1,17 @@
+#!/bin/bash
+# Simple BitchX starter
+
+export UID=$(id -u)
+export GID=$(id -g)
+
+echo "Starting BitchX container..."
+docker compose -f compose.simple.yaml up -d
+
+echo ""
+echo "Container is running."
+echo ""
+echo "To connect to BitchX: ./bx-attach"
+echo "To detach: Press Ctrl+B then D"
+echo ""
+echo "Note: When you /quit BitchX, the container stays running."
+echo "      Just run ./bx-attach again to restart BitchX."

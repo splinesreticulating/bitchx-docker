@@ -1,0 +1,57 @@
+::windowing stuphs
+alias channame if ([$[1]0]==[#]) {@ FUNCTION_RETURN = [$0]} {@ FUNCTION_RETURN = [#$0]}
+alias wh {eecho Coming soon}
+alias wc {^window new hide swap last double on split on}
+alias wj if ([$0])
+	{wc;^window bind $channame($0);join $0}
+	{echo $G usage$(hblk):$(cl) /wj $(hblk)[$(cl)channel$(hblk)]}
+alias wns if ([$0]) {^window new server $0 double on hide}
+
+alias win1 window swap 1
+alias win2 window swap 2
+alias win3 window swap 3
+alias win4 window swap 4
+alias win5 window swap 5
+alias win6 window swap 6
+alias win7 window swap 7
+alias win8 window swap 8
+alias win9 window swap 9
+
+alias wk  {window kill}
+alias wlk {part $C;wk}
+
+alias wn {window next}
+alias wp {window previous}
+
+alias whelp {
+echo $G osiris windowing commands$(hblk):
+echo $G 
+echo $G /wc            $(hblk):$(cl)creates a new window
+echo $G /wj $(hblk)[$(cl)#channel$(hblk)] :$(cl)creates a new window and joins [#channel]
+echo $G /wns $(hblk)[$(cl)server$(hblk)]  :$(cl)creates a new window on a different server
+echo $G /wk            $(hblk):$(cl)kills current window
+echo $G /wlk           $(hblk):$(cl)leaves current channel and kills current window
+echo $G /wn            $(hblk):$(cl)goes to the next window
+echo $G /wp            $(hblk):$(cl)goes to the previous window
+echo $G
+}
+
+bind ^W meta5_character
+bind META5-1	PARSE_COMMAND win1
+bind META5-2	PARSE_COMMAND win2
+bind META5-3	PARSE_COMMAND win3
+bind META5-4	PARSE_COMMAND win4
+bind META5-5	PARSE_COMMAND win5
+bind META5-6	PARSE_COMMAND win6
+bind META5-7	PARSE_COMMAND win7
+bind META5-8	PARSE_COMMAND win8
+bind META5-9	PARSE_COMMAND win9
+bind META5-c	PARSE_COMMAND wc
+bind META5-k	PARSE_COMMAND wk
+bind META5-h	PARSE_COMMAND wh
+bind META5-p	PARSE_COMMAND wp
+bind META5-n	PARSE_COMMAND wn
+bind ^E self_insert
+bind ^O self_insert
+bind ^T parse_command dcc.get
+bind ^R parse_command dcc.rej

@@ -1,0 +1,19 @@
+SET FORMAT_WHOIS_ADMIN %K| %Wa%ndmin    : $0 - $1-
+SET FORMAT_WHOIS_AWAY %K| %Wa%nway     : $0 - $1-
+SET FORMAT_WHOIS_BOT %g| %Wb%not      : A:$0 P:$1 [$2] $3-
+SET FORMAT_WHOIS_CHANNELS %g| %Wc%nhannels : $0-
+SET -FORMAT_WHOIS_FOOTER
+SET FORMAT_WHOIS_FRIEND %g| %Wf%nriend   : F:$0 $1-
+SET FORMAT_WHOIS_HEADER %GÚÄÄÄÄÄ---%gÄ%G--%gÄÄ%G-%gÄÄÄÄÄÄ---%KÄ%g--%KÄÄ%g-%KÄÄÄÄÄÄÄÄÄ--- --  -
+SET FORMAT_WHOIS_HELP %K| %Wh%nelp     : $0 - $1-
+SET FORMAT_WHOIS_IDLE %K: %Wi%ndle     : $0 hours $1 mins $2 secs (signon: $stime($3))
+SET FORMAT_WHOIS_NAME %G³ %Wi%nrcname  : $0-
+SET FORMAT_WHOIS_NICK %G| %W$0 %K(%n$1@$2%K) %K(%W$3-%K)
+SET FORMAT_WHOIS_OPER %K| %Wo%nperator : $0 $1-
+SET FORMAT_WHOIS_REGISTER %K| %Wr%negister : $0 - $1-
+SET FORMAT_WHOIS_SERVER %K³ %Ws%nerver   : $0 ($1-)
+SET FORMAT_WHOIS_SERVICE %K| %Ws%nervice  : $0 - $1-
+SET FORMAT_WHOIS_SHIT %g| %Ws%nhit     : L:$0 [$1] $2 $3-
+SET FORMAT_WHOIS_SIGNON %K %Ws%nignon   : $0-
+SET FORMAT_WHOWAS_HEADER %GÚÄÄÄÄÄ---%gÄ%G--%gÄÄ%G-%gÄÄÄÄÄÄ---%KÄ%g--%KÄÄ%g-%KÄÄÄÄÄÄÄÄÄ--- --  -
+SET FORMAT_WHOWAS_NICK %G| %W$0%n was %K(%n$1@$2%K)

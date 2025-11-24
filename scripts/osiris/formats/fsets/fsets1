@@ -1,0 +1,66 @@
+#alias do_fmt {
+^fset format_381 $G you are now an IrcOp
+^fset format_391 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)channel is full $(c6)($(c7)+$(c3)l$(c6))
+^fset format_443 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)channel is full $(c6)($(c7)+$(c3)l$(c6))
+^fset format_471 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)channel is full $(c6)($(c7)+$(c3)l$(c6))
+^fset format_473 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)invite only channel $(c6)($(c7)+$(c3)i$(c6))
+^fset format_474 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)banned from channel $(c6)($(c7)+$(c3)b$(c6))
+^fset format_475 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)bad channel key $(c6)($(c7)+$(c3)k$(c6))
+^fset format_476 $G $(c1)error$(c6)!$(c2)$1 $(c6)-> $(c5)you aren't an op $(c6)($(c7)-$(c3)o$(c6))
+
+^fset format_bwall $(c6)[$(c1)wall$(c6)/$(c2)$1$(c6)($(c3)$2$(c6))]$(cl) $4-
+
+^fset format_channel_signoff $G $(c1)signoff$(c6)!$(c2)$3 $(c6)-> $(c5)$1 $(c6)(%n$4-$(c6))
+
+^fset format_ctcp $G $(c1)ctcp$(c6)!$(c2)$tolower($4-) $(c6)($(c5)$1$(c6)[$(c3)$2$(c6)]) $(c6)-> $(c4)$3
+^fset -format_ctcp_cloak
+^fset -format_ctcp_cloak_func
+^fset -format_ctcp_cloak_func_user
+^fset -format_ctcp_cloak_unknown
+^fset -format_ctcp_cloak_unknown_user
+^fset -format_ctcp_cloak_user
+^fset -format_ctcp_func
+^fset -format_ctcp_func_user
+^fset -format_ctcp_unknown
+^fset -format_ctcp_unknown_user
+^fset -format_ctcp_user
+^fset format_ctcp_reply $G $(c1)reply$(c6)!$(c2)$tolower($3) $(c6)-> $(c5)$1 $(c6)(%n$4-$(c6))
+
+^fset format_dcc_chat $(c6)[$(c4)$1$(c6)/$(c3)dcc$(c6)]$(cl) $3-
+^fset format_dcc_connect $G $(c6)[$(c3)dcc$(c6)/$(c4)$1$(c6)]$(cl) connection established $(c6)[$(c4)$2$(c6)($(cl)$4$(c3)/$(cl)$5$(c6))]
+^fset format_dcc_lost $G $(c6)[$(c3)dcc$(c6)/$(c4)$1$(c6)] $(cl)$2$(c6)($(cl)$3$(c6))$(cl) $4 $5 completed in $(c3)$6 secs $(c6)[$(cl)$7 $8$(c3)/$(cl)sec$(c6)]
+^fset format_dcc_request $G $(c6)[$(c3)dcc$(c6)/$(c4)$1 request$(c6)]$(cl) $2 $(c6)[$(c3)from$(c6)/$(c4)$3$(c6)($(c3)$4$(c6))]
+
+^fset format_invite $G $1 invites you to %W$2-
+^fset format_invite_user $G invited %c$1%n to %W$2-
+^fset format_join $G $(c1)join$(c6)!$(c2)$3 $(c6)-> $(c5)$1$(c6)($(c3)$2$(c6))
+^fset format_kick $G $(c1)kick$(c6)!$(c2)$2 $(c6)-> $(c5)$3 $(c6)(%n$4-$(c6))%n by $(c4)$1
+^fset format_kick_user $G $(c1)kick$(c6)!$(c2)$2 $(c6)-> $(c5)YOU $(c6)(%n$4-$(c6))%n by $(c4)$1
+^fset format_leave $G $(c1)leave$(c6)!$(c2)$3 $(c6)-> $(c5)$1$(c6)($(c3)$2$(c6))
+
+^fset format_mail $G %Cyou have new mail
+
+^fset format_mode $G $(c1)mode$(c6)!$(c2)$3 $(c6)-> $(c5)$4-%n by $(c4)$1
+^fset format_smode $G $(c1)mode$(c6)!$(c2)$3 $(c6)-> $(c5)$4-%n by $(c4)$1
+^fset format_mode_channel $G $(c1)mode$(c6)!$(c2)$3 $(c6)-> $(c5)$4-%n by $(c4)$1
+
+^fset format_nickname $G $(c1)nick$(c6)!$(c2)$1 $(c6)-> $(c3)$3
+^fset format_nickname_other $G $(c1)nick$(c6)!$(c2)$1 $(c6)-> $(c3)$3
+^fset format_nickname_user $G $(c1)nick$(c6)!$(c2)$1 $(c6)-> $(c3)$3
+
+^fset format_send_away away($tolower($awaymsg)) email($tolower($email)) left($tolower($strftime($1 %I:%M%p)))
+^fset format_send_ctcp $G $(c1)ctcp$(c6)!$(c2)$1 $(c6)-> $(cl)$tolower($2-)
+^fset format_send_dcc_chat $(c6)[$(c3)dcc$(c6)/$(c4)$1$(c6)]$(cl) $2-
+
+^fset format_signoff $G $(c1)signoff$(c6)!$(c2)$2 $(c6)-> $(c5)$1 $(c6)(%n$3-$(c6))
+
+^fset format_topic $G $(c1)topic for $(c2)$1$(c6):%n $2-
+^fset format_topic_change $G $(c1)topic$(c6)!$(c2)$2 $(c6)-> %n$3- $(c6)(%nby $(c5)$1$(c6))
+^fset format_topic_setby $G $(c1)set by $(c6)-> $(c3)$2 $(c6)[$(c4)$stime($3)$(c6)]
+^fset format_topic_unset $G $(c1)topic$(c6)!$(c2)unset $(c6)-> $(c3)$2%n by $(c4)$1
+
+^fset format_usage $G %Wu%nsage%K:%n /$0  $1-
+
+^fset format_usermode $G $(c1)mode$(c6)!$(c2)$3 $(c6)-> $(c3)$4- %nby $(c4)$1
+#}
+#do_fmt

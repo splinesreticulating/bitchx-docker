@@ -1,0 +1,8 @@
+alias mme {
+        if (mychannels()) {
+                fe ($mychannels()) mychan {
+                        if ([$mychan]==[$C]) {
+                        me $0-
+                }{^describe $mychan $0-}
+}}}
+

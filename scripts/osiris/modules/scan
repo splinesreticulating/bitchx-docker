@@ -1,0 +1,80 @@
+alias fix.scn {
+        if ([$[1]0] == [@]) {
+                @ nick = right(${strlen($0) - 1} $0)
+                @ function_return = [$(scc1)@$(scc2)$[9]nick$(scc3)]
+        }{
+        if ([$[1]0] == [+]) {
+                @ nick = right(${strlen($0) - 1} $0)
+                @ function_return = [$(scc1)+$(scc2)$[9]nick$(scc3)]
+        }{
+                @ function_return = [ $(scc2)$[9]0$(scc3)]
+        }}
+}
+
+^on ^hook "show.scan 1" {
+asayscan1nick $shift(nicks2)
+}
+^on ^hook "show.scan 2" {
+asayscan2nicks $shift(nicks2) $shift(nicks2)
+}
+^on ^hook "show.scan 3" {
+asayscan3nicks $shift(nicks2) $shift(nicks2) $shift(nicks2)
+}
+^on ^hook "show.scan 4" {
+asayscan4nicks $shift(nicks2) $shift(nicks2) $shift(nicks2) $shift(nicks2)
+}
+
+alias scan {
+if ([$0]) {@ scanchan = [$0]}{@ scanchan = C}
+if (match($scanchan $mychannels())) { 
+if (channel($scanchan)) {
+^hook showscan 366 $scanchan $strip(.* $channel($scanchan))
+}{
+^hook showscan 366 $scanchan $gotchan[$encode($tolower($scanchan))]
+}
+}{
+pe Scan: You are not on $scanchan
+}}
+^on ^raw_irc "% 366 *" {
+@tnicks.ops=sort($strip(@ $pattern(@% $gotchan[$encode($tolower($3))])))
+@tnicks.voc=sort($strip(+ $pattern(+% $gotchan[$encode($tolower($3))])))
+@tnicks.non=sort($filter(+% $filter(@% $gotchan[$encode($tolower($3))])))
+fe ($tnicks.ops) nick {
+^push tnicks @$nick
+}
+fe ($tnicks.voc) nick {
+^push tnicks +$nick
+}
+@tnicks #= [ ] ## tnicks.non
+^hook showscan 366 $3 $tnicks
+^assign -tnicks
+}
+^on ^hook "showscan 366 *" {
+	^local cycle 0
+	^local nicks $3-
+	^local chan $2
+        ^local scan1
+        ^push scan1 $pattern(@% $nicks)
+        ^push scan1 $pattern(+% $nicks)
+        ^push scan1 $filter(+% $filter(@% $nicks))
+         @nicks.ops=pattern(@% $nicks)
+         @nicks.voc=pattern(+% $nicks)
+         @nicks.non=filter(+% $filter(@% $nicks))
+         @ nicks2 = nicks.ops##[ ]##nicks.voc##[ ]##nicks.non
+         ^assign repits ${numwords($nicks)/5} 
+asayscan1 $chan $numwords($nicks.ops) $numwords($nicks.voc) $numwords($nicks.non) $numwords($nicks)
+asayscan2 $chan $numwords($nicks.ops) $numwords($nicks.voc) $numwords($nicks.non) $numwords($nicks)
+         while (cycle<repits) {
+@cycle++
+asayscan3 $shift(nicks2) $shift(nicks2)  $shift(nicks2) $shift(nicks2) $shift(nicks2)
+}
+         ^hook show.scan $numwords($nicks2)
+asayscan4 $numwords($nicks.ops) $numwords($nicks.voc) $numwords($nicks.non) $numwords($nicks)
+asayscan5 $numwords($nicks)
+        ^assign -scan1;^assign -nlist1;^assign -nlist2;^assign -nlist2;^assign -nlist4;^assign -nlist5;^assign -nlist6;^assign -nicks.voc;^assign -nicks.non;^assign -nicks.ops
+}
+^on ^353 * {
+^push gotchan[$encode($tolower($2))] $3-
+}
+^on #-channel_synch 663 * {^assign -gotchan[$encode($tolower($0))]
+}

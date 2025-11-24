@@ -1,0 +1,315 @@
+@afo=[7]
+@cfo=[3]
+@efo=[21]
+@ffo=[3]
+@kfo=[4]
+@mfo=[6]
+@nfo=[40]
+@nofo=[2]
+@pfo=[5]
+@scfo=[7]
+@snfo=[2]
+@spfo=[5]
+@sbfo=[13]
+@wfo=[3]
+
+alias aformat {
+   if ([$0] && ([$0] <= afo)) {
+   @away=[$0]
+   ^load ~/osiris/formats/away/away$(away)
+   echo $G loaded away format $(hblk)[$(hwht)$(away)$(hblk)]
+ }{
+   echo $G away formats available$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) shiftee is away, reason \(l!on\) : os/bx
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) shiftee is detached. reason \(log!os.bx\)
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) shiftee is away!reason [osiris!log]
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) shiftee is away\(reason\) log\(yes\) os\($(osrel)\)
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) shiftee is idle/reason - log/os.bx
+   echo $G $(hblk)[$(hwht) 6$(hblk)]$(cl) shiftee is away, reason \(l!on\) [os/bx]
+   echo $G $(hblk)[$(hwht) 7$(hblk)]$(cl) shiftee is away: \(reason\) [BX-MsgLog ON]
+   echo $G
+   echo $G usage$(hblk):$(cl) /aformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current away format$(hblk):$(cl) $(hblk)[$(hwht)$(away)$(hblk)]
+ }
+   if ([$0] > afo) {echo $G number specified is out of range!}
+}
+
+alias cformat {
+   if ([$0] && ([$0] <= cfo)) {
+   @cdcc=[$0]
+   ^load ~/osiris/formats/cdcc/cdcc$(cdcc)
+   echo $G loaded cdcc plist format $(hblk)[$(hwht)$(cdcc)$(hblk)]
+ }{
+   echo $G cdcc plist formats available$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) \(os!dcc\) /ctcp shiftee cdcc send N to get N
+   echo $G      ::: # 1 \(34.61kb [0x]\) this is a file
+   echo $G              . this is a note
+   echo $G      \(os!dcc\) offered/34.61kb . sent/0b
+   echo $G
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl)    [os/cdcc % 1 pack offered \(34.61kb\)]
+   echo $G     Þ1ÝÄ\( 0 gets - 34.61kb \)Ä> this is a file
+   echo $G      ÀÄÄÄ>  this is a note
+   echo $G         [0b sent, record 0b/s, 5/5 open]
+   echo $G
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) [os%cdcc] /ctcp sh|ftee cdcc help for commands
+   echo $G      ... \(0x/34.61kb\) #1 - this is a file
+   echo $G         øùú -  this is a note
+   echo $G      [os%cdcc] offered/34.61kb . sent/0b
+   echo $G 
+   echo $G usage$(hblk):$(cl) /cformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current cdcc plist format$(hblk):$(cl) $(hblk)[$(hwht)$(cdcc)$(hblk)]
+ }
+   if ([$0] > cfo) {echo $G number specified is out of range!}
+}
+
+alias eformat {
+   if ([$0] && ([$0] <= efo)) {
+   @echo=[$0]
+   ^load ~/osiris/formats/echo/echo$(echo)
+   echo $G loaded echo string format $(hblk)[$(hwht)$(echo)$(hblk)]
+ }{
+   echo $G available echo string formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $cparse("%Kú%wú%Wú   %K[%W11%K]%n %Kú%r-%RÄ   %K[%W21%K]%n %Rù%Wí%Rù")
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $cparse("%Kú%rú%Rú   %K[%W12%K]%n %B:%c:%b:")
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) $cparse("%Kú%gú%Gú   %K[%W13%K]%n %c­%C!%c­")
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) $cparse("%Kú%bú%Bú   %K[%W14%K]%n %K=%b=%B=")
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) $cparse("%Kú%mú%Mú   %K[%W15%K]%n %KÄ%cÄ%CÄ")
+   echo $G $(hblk)[$(hwht) 6$(hblk)]$(cl) $cparse("%Kú%cú%Cú   %K[%W16%K]%n %KÜ%wÜ%WÜ")
+   echo $G $(hblk)[$(hwht) 7$(hblk)]$(cl) $cparse("%B[%G!%B]   %K[%W17%K]%n %W®%Bë%W¯")
+   echo $G $(hblk)[$(hwht) 8$(hblk)]$(cl) $cparse("%r(%Bð%r)   %K[%W18%K]%n %Kø%Rù%rú")
+   echo $G $(hblk)[$(hwht) 9$(hblk)]$(cl) $cparse("%n***   %K[%W19%K]%n %K[%wo%Ws%K]")
+   echo $G $(hblk)[$(hwht)10$(hblk)]$(cl) $cparse("%g-%G=%g-   %K[%W20%K]%n %K[%C%%%K]")
+   echo $G
+   echo $G usage$(hblk):$(cl) /eformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current echo string format$(hblk):$(cl) $(hblk)[$(hwht)$(echo)$(hblk)]
+ }
+   if ([$0] > efo) {echo $G number specified is out of range!}
+}
+
+alias fformat {
+   if ([$0] && ([$0] <= ffo)) {
+   @fsets=[$0]
+   ^load ~/osiris/formats/fsets/fsets$(fsets)
+   echo $G loaded fsets format $(hblk)[$(hwht)$(fsets)$(hblk)]
+ }{
+   echo $G available fsets formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $G $(c1)join$(c6)!$(c2)#channel $(c6)-> $(c5)nick$(c6)\($(c3)user@host$(c6)\)
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $G $(hcyn)nick $(hblk)[$(cyn)user@host$(hblk)]$(cl) has joined #channel
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) $G $(c1)join$(c6)\($(c2)#channel$(c6)\)$(c7) nick $(c6)\($(c2)user@host$(c6)\)
+   echo $G
+   echo $G usage$(hblk):$(cl) /fformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current fsets format$(hblk):$(cl) $(hblk)[$(hwht)$(fsets)$(hblk)]
+ }
+   if ([$0] > ffo) {echo $G number specified is out of range!}
+}
+
+alias kformat {
+   if ([$0] && ([$0] <= kfo)) {
+   @klogo=[$0]
+   ^load ~/osiris/formats/klogo/klogo$(klogo)
+   echo $G loaded kick logo format $(hblk)[$(hwht)$(klogo)$(hblk)]
+ }{
+   echo $G available kick logo formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) os(k) , os(bk)
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) os/k , os/bk
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) os!k , os!bk
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) os%k , os%bk
+   echo $G
+   echo $G usage$(hblk):$(cl) /kformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current kick logo format$(hblk):$(cl) $(hblk)[$(hwht)$(klogo)$(hblk)]
+ }
+   if ([$0] > kfo) {echo $G number specified is out of range!}
+}
+
+alias mformat {
+   if ([$0] && ([$0] <= mfo)) {
+   @msgs=[$0]
+   ^load ~/osiris/formats/msgs/msgs$(msgs)
+   echo $G loaded msg format $(hblk)[$(hwht)$(msgs)$(hblk)]
+ }{
+   echo $G available msg formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $cparse("%K-> %C(%cnick%C)%n hi %K/%n %Cnick%K(%cuser@host%K):%n hi")
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $cparse("%C[%Wnick%C]%n hi %K/%n %C[%Wnick%r!%Wuser@host%C]%n hi")
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) $cparse("%B[%cm%Csg%B(%Cnick%B)]%n hi %K/%n %B[%Cnick%B(%cuser@host%B)]%n hi")
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) $cparse("%b-%B¯ %K(%Gnick%K)%n hi %K/%n %B®%b- %K(%Gnick %Cí %guser@host%K)%n hi")
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) $cparse("%K[%4%Wnick%n%K]%n hi %K/%n %K[%4%Wnick%4%C!%w%4user@host%n%K]%n hi")
+   echo $G $(hblk)[$(hwht) 6$(hblk)]$(cl) $cparse("%K[%rmsg%K(%Rnick%K)]%n hi %K/%n %K[%Pnick%K(%puser@host%K)]%n hi")
+   echo $G
+   echo $G usage$(hblk):$(cl) /mformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current msg format$(hblk):$(cl) $(hblk)[$(hwht)$(msgs)$(hblk)]
+ }
+   if ([$0] > mfo) {echo $G number specified is out of range!}
+}
+
+alias nformat {
+   if ([$0] && ([$0] <= nfo)) {
+   @ncomp=[$0]
+   ^load ~/osiris/formats/ncomp/ncomp$(ncomp)
+   echo $G loaded nick completion format $(hblk)[$(hwht)$(ncomp)$(hblk)]
+ }{
+   echo $G available nick completion formats$(hblk):
+   echo $G
+   echo $G $cparse("%K[%W 1%K]%n nick: hi   %K[%W11%K]%n nick: hi   %K[%W21%K]%n nick: hi   %K[%W31%K]%n nick: hi")
+   echo $G $cparse("%K[%W 2%K]%n nick, hi   %K[%W12%K]%n nick, hi   %K[%W22%K]%n nick, hi   %K[%W32%K]%n nick, hi")
+   echo $G $cparse("%K[%W 3%K]%n nick. hi   %K[%W13%K]%n nick. hi   %K[%W23%K]%n nick. hi   %K[%W33%K]%n nick. hi")
+   echo $G $cparse("%K[%W 4%K]%n nick+ hi   %K[%W14%K]%n nick+ hi   %K[%W24%K]%n nick+ hi   %K[%W34%K]%n nick+ hi")
+   echo $G $cparse("%K[%W 5%K]%n nick- hi   %K[%W15%K]%n nick- hi   %K[%W25%K]%n nick- hi   %K[%W35%K]%n nick- hi")
+   echo $G $cparse("%K[%W 6%K]%n :nick: hi  %K[%W16%K]%n :nick: hi  %K[%W26%K]%n :nick: hi  %K[%W36%K]%n :nick: hi")
+   echo $G $cparse("%K[%W 7%K]%n [nick] hi  %K[%W17%K]%n [nick] hi  %K[%W27%K]%n [nick] hi  %K[%W37%K]%n [nick] hi")
+   echo $G $cparse("%K[%W 8%K]%n (nick): hi %K[%W18%K]%n \(nick\): hi %K[%W28%K]%n \(nick\): hi %K[%W38%K]%n \(nick\): hi")
+   echo $G $cparse("%K[%W 9%K]%n nick - hi  %K[%W19%K]%n nick - hi  %K[%W29%K]%n nick - hi  %K[%W39%K]%n nick - hi")
+   echo $G $cparse("%K[%W10%K]%n nick= hi   %K[%W20%K]%n nick= hi   %K[%W30%K]%n nick= hi   %K[%W40%K]%n nick= hi")
+   echo $G
+   echo $G usage$(hblk):$(cl) /nformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current nick completion format$(hblk):$(cl) $(hblk)[$(hwht)$(ncomp)$(hblk)]
+ }
+   if ([$0] > nfo) {echo $G number specified is out of range!}
+}
+
+alias noformat {
+   if ([$0] && ([$0] <= nofo)) {
+   @nots=[$0]
+   ^load ~/osiris/formats/nots/nots$(nots)
+   echo $G loaded notice format $(hblk)[$(hwht)$(nots)$(hblk)]
+ }{
+   echo $G available notice formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $(c1)-$(c2)shiftee$(c1)-$(cl) hi
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $cparse("%K-%Pnick%K(%puser@host%K)-%n hi")
+   echo $G
+   echo $G usage$(hblk):$(cl) /noformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current notice format$(hblk):$(cl) $(hblk)[$(hwht)$(nots)$(hblk)]
+ }
+   if ([$0] > nofo) {echo $G number specified is out of range!}
+}
+
+alias pformat {
+   if ([$0] && ([$0] <= pfo)) {
+   @pub=[$0]
+   ^load ~/osiris/formats/pub/pub$(pub)
+   echo $G loaded public format $(hblk)[$(hwht)$(pub)$(hblk)]
+ }{
+   echo $G available public formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $cparse("$(c6)<%nshiftee$(c6)>%n hi")
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $cparse("%b<%nshiftee%b>%n hi")
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) $cparse("%C<%nshiftee%C>%n hi")
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) $cparse("%W<%Bshiftee%W>%n hi")
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) $cparse("%K<%Wshiftee%K>%n hi")
+   echo $G
+   echo $G usage$(hblk):$(cl) /pformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current public format$(hblk):$(cl) $(hblk)[$(hwht)$(pub)$(hblk)]
+ }
+   if ([$0] > pfo) {echo $G number specified is out of range!}
+}
+
+alias scformat {
+   if ([$0] && ([$0] <= scfo)) {
+   @scan=[$0]
+   ^load ~/osiris/formats/scan/scan$(scan)
+   echo $G loaded scan format $(hblk)[$(hwht)$(scan)$(hblk)]
+ }{
+   echo $G available scan formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) scan #1 by void
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) scan #2 by void
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) scan #3 by shiftee
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) scan #4 by shiftee
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) scan #5 by panasync
+   echo $G $(hblk)[$(hwht) 6$(hblk)]$(cl) scan #6 by treman
+   echo $G $(hblk)[$(hwht) 7$(hblk)]$(cl) scan #7 by shiftee
+   echo $G
+   echo $G usage$(hblk):$(cl) /scformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current scan format$(hblk):$(cl) $(hblk)[$(hwht)$(scan)$(hblk)]
+ }
+   if ([$0] > scfo) {echo $G number specified is out of range!}
+}
+
+alias snformat {
+   if ([$0] && ([$0] <= snfo)) {
+   @snots=[$0]
+   ^load ~/osiris/formats/snots/snots$(snots)
+   echo $G loaded send notice format $(hblk)[$(hwht)$(snots)$(hblk)]
+ }{
+   echo $G available send notice formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $(c6)-> $(c1)-$(c2)shiftee$(c1)-$(cl) hi
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $cparse("%K[%rnotice%K(%Rshiftee%K)] %nhi")
+   echo $G
+   echo $G usage$(hblk):$(cl) /snformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current send notice format$(hblk):$(cl) $(hblk)[$(hwht)$(snots)$(hblk)]
+ }
+   if ([$0] > snfo) {echo $G number specified is out of range!}
+}
+
+alias spformat {
+   if ([$0] && ([$0] <= spfo)) {
+   @spub=[$0]
+   ^load ~/osiris/formats/spub/spub$(spub)
+   echo $G loaded send public format $(hblk)[$(hwht)$(spub)$(hblk)]
+ }{
+   echo $G available send public formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) $cparse("$(c1)<%nyournick$(c1)>%n hi")
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) $cparse("%p<%nyournick%p>%n hi")
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) $cparse("$(c1)®%cyournick$(c1)¯%n hi")
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) $cparse("%B<%Wyournick%B>%n hi")
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) $cparse("%c®%Cyournick%c¯%n hi")
+   echo $G
+   echo $G usage$(hblk):$(cl) /spformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current send public format$(hblk):$(cl) $(hblk)[$(hwht)$(spub)$(hblk)]
+ }
+   if ([$0] > spfo) {echo $G number specified is out of range!}
+}
+
+alias sbformat {
+   if ([$0] && ([$0] <= sbfo)) {
+   @stat=[$0]
+   ^load ~/osiris/formats/stat/stat$(stat)
+   echo $G loaded status bar format $(hblk)[$(hwht)$(stat)$(hblk)]
+ }{
+   echo $G available status bar formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) statusbar #1 by void
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) statusbar #2 by void
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) statusbar #3 by void
+   echo $G $(hblk)[$(hwht) 4$(hblk)]$(cl) statusbar #4 by shiftee
+   echo $G $(hblk)[$(hwht) 5$(hblk)]$(cl) statusbar #5 by shiftee
+   echo $G $(hblk)[$(hwht) 6$(hblk)]$(cl) statusbar #6 by panasync
+   echo $G $(hblk)[$(hwht) 7$(hblk)]$(cl) statusbar #7 by Timer
+   echo $G $(hblk)[$(hwht) 8$(hblk)]$(cl) statusbar #8 by icetrey
+   echo $G $(hblk)[$(hwht) 9$(hblk)]$(cl) statusbar #9 by icetrey
+   echo $G $(hblk)[$(hwht)10$(hblk)]$(cl) statusbar #10 by shiftee
+   echo $G $(hblk)[$(hwht)11$(hblk)]$(cl) statusbar #11 by codelogic
+   echo $G $(hblk)[$(hwht)12$(hblk)]$(cl) statusbar #12 by shiftee
+   echo $G $(hblk)[$(hwht)13$(hblk)]$(cl) statusbar #13 by icetrey
+   echo $G
+   echo $G usage$(hblk):$(cl) /sbformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current status bar format$(hblk):$(cl) $(hblk)[$(hwht)$(stat)$(hblk)]
+ }
+   if ([$0] > sbfo) {echo $G number specified is out of range!}
+}
+
+alias wformat {
+   if ([$0] && ([$0] <= wfo)) {
+   @whois=[$0]
+   ^load ~/osiris/formats/whois/whois$(whois)
+   echo $G loaded whois format $(hblk)[$(hwht)$(whois)$(hblk)]
+ }{
+   echo $G available whois formats$(hblk):
+   echo $G
+   echo $G $(hblk)[$(hwht) 1$(hblk)]$(cl) whois #1 by shiftee
+   echo $G $(hblk)[$(hwht) 2$(hblk)]$(cl) whois #2 by panasync
+   echo $G $(hblk)[$(hwht) 3$(hblk)]$(cl) whois #3 by icetrey
+   echo $G
+   echo $G usage$(hblk):$(cl) /wformat $(hblk)[$(cl)#$(hblk)]
+   echo $G current whois format$(hblk):$(cl) $(hblk)[$(hwht)$(whois)$(hblk)]
+ }
+   if ([$0] > wfo) {echo $G number specified is out of range!}
+}

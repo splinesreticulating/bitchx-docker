@@ -1,0 +1,70 @@
+
+alias faway {
+   if ([$1]) {
+     @awyrsn=[$1-]
+     /quote notice $0 :[away, $(awyrsn) \(l!on\)] [os/bx]
+     echo $G sent fake away to $(hwht)$0
+}{
+   ^ohelp faway
+ }
+}
+
+alias fchat {
+   if ([$0]) {
+     /quote PRIVMSG $0 :DCC CHAT chat ${rand(3) + 1}$rand(6)$rand(5)$rand(4)$rand(4)$rand(7)$rand(8)$rand(9)$rand(6)${rand(2) + 1} ${rand(5) + 1}$rand(5534)
+     echo $G sent fake dcc chat request to $(hwht)$0$(cl)
+}{
+   ^ohelp fchat
+}}
+
+alias fdcc {
+   if ([$2]) {
+     @ f.bytes = [$2]
+     /quote PRIVMSG $0 :DCC SEND $1 ${rand(3) + 1}$rand(6)$rand(5)$rand(4)$rand(4)$rand(7)$rand(8)$rand(9)$rand(6)${rand(2) + 1} ${rand(5) + 1}$rand(5534) $f.bytes\
+     echo $G sent fake dcc send $(hblk)\($(cl)$1$(hblk)\)$(cl) to $(hwht)$0
+     ^assign -f.bytes
+}{
+    ^ohelp fdcc
+ }
+}
+
+alias frelm {
+   if ([$2]) {
+    @ ffrom = [$0]
+    @ fto   = [$1]
+    @ fmsg  = [$2-]
+   userhost $0 -cmd if ([$4]!=[<UNKNOWN>]) {
+    @ fstr = [$fparse(format_msg ! $0 $userhost($0) $fmsg)]
+   msg $fto $fstr
+   }{
+      echo $G $(hwht)$0$(cl) isn't on irc right now.
+   }
+}{
+    ^ohelp frelm
+ }
+}
+
+alias freln {
+   if ([$2]) {
+    @ ffrom = [$0]
+    @ fto   = [$1]
+    @ fnot  = [$2-]
+   userhost $0 -cmd if ([$4]!=[<UNKNOWN>]) {
+    @ fstr  = [$fparse(format_notice ! $0 $userhost($0) $fnot)]
+   msg $fto $fstr
+   }{
+      echo $G $(hwht)$0$(cl) isn't on irc right now.
+   }
+}{
+    ^ohelp freln
+ }
+}
+
+alias freply {
+   if ([$0]) {
+     /quote notice $0 :$1-
+     echo $G sent $(hwht)$0$(cl) fake ctcp reply
+}{
+    ^ohelp freply
+ }
+}

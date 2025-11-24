@@ -1,0 +1,43 @@
+^fset -format_away
+^fset -format_back
+
+alias gone {@awaystat=[1]
+        @awayl=[on]
+        @awaytime=[$time()]
+        @awaymsg=[$0]?[$0-]:[afk]
+        //away $awaymsg  }{
+        @awaytime=[$time()]
+        echo log is ${awayl}
+}
+alias away {@awaystat=[1]
+	@awayl=[on]
+	@awaytime=[$time()]
+	@awaymsg=[$0]?[$0-]:[afk]
+	load ~/osiris/formats/away/away$(away)
+	//away $awaymsg  }{
+	@awaytime=[$time()]
+        echo log is ${awayl}  
+}	  
+alias back {@awaystat=[0]
+	@backmsg=[$0]?[$0-]:[rejoice]
+	@backtime=[$time()]
+	if ([$awaytime] > [0]) {
+	@timediff=[$tdiff2(${backtime - awaytime})]
+	//back 	
+ 	mme is back, ${backmsg} \(g!${timediff}\) : os/bx
+	if ([$awayl]=[on]) 
+	@awayl=[off]
+	echo $G logging has been turned off
+	input "read away log? [y/N]: " if ([$0]==[Y]) {readlog}}
+        if ([$awaytime] < [1]) {
+	//back 	
+ 	mme is back, ${backmsg} \(g!0\) : os/bx
+	if ([$awayl]=[on]) 
+	@awayl=[off]
+	echo $G logging has been turned off
+	input "read away log? [y/N]: " if ([$0]==[Y]) {readlog}}
+	@awaytime=[0]
+}        	
+
+on -idle * if ([$0]!=[0]) { if ([$0]==[$awayt]&&![$awaystat]==[1]) {away autoaway after $0 min
+	echo $G auto set away after $0 minutes}}

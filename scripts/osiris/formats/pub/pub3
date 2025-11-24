@@ -1,0 +1,4 @@
+SET FORMAT_PUBLIC %C<${ischanop($1 $2)?[$(hblk)@$(cl)]:isvoice($2 $1)?[$(hblk)+$(cl)]:}%n$1%C>%n $3-
+SET FORMAT_PUBLIC_OTHER %c<${ischanop($1 $2)?[$(hblk)@$(cl)]:isvoice($2 $1)?[$(hblk)+$(cl)]:}%n$1%C/%n$2%c>%n $3-
+SET FORMAT_PUBLIC_AR %C<${ischanop($1 $2)?[$(hblk)@$(cl)]:isvoice($2 $1)?[$(hblk)+$(cl)]:}%c$1%C>%n $3-
+SET FORMAT_PUBLIC_OTHER_AR %c<${ischanop($1 $2)?[$(hblk)@$(cl)]:isvoice($2 $1)?[$(hblk)+$(cl)]:}%C$1%W/%n$2%c>%n $3-

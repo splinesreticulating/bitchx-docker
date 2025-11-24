@@ -1,0 +1,10 @@
+^fset format_whois_header $(wc5)ÚÄ$(wc2)ÄÄ----ÄÄÄ-ÄÄÄÄ$(wc1)ÄÄÄ--Ä-Ä--ÄÄÄÄÄÄÄÄ---ÄÄÄÄÄ-ÄÄÄÄÄ$(wc6)ÄÄÄÄÄ-Ä--ÄÄÄÄÄÄ---ÄÄÄÄÄ
+^fset format_whois_nick $(wc2)³ $(wc3)$[9]0 $(wc5)- $(wc7)$1$(wc1)@$(wc7)$2
+^fset format_whois_name $(wc2)| i$(wc1)r$(wc6)cname   $(wc2)- $(cl)$0-
+^fset format_whois_channels $(wc1)³ $(wc2)c$(wc1)h$(wc6)annels  $(wc1)-$(wc7) $dofade($vfade($0-))
+^fset format_whois_server $(wc6)³ $(wc2)s$(wc1)e$(wc6)rver    -$(wc7) $0 $(wc1)($(wc7)$1-$(wc1))$(cl)
+^fset format_whois_away $(wc1)³ $(wc2)a$(wc1)w$(wc6)ay      $(wc1)- $(wc7)$1-
+^fset format_whois_oper $(wc2)³ i$(wc1)r$(wc6)cop     $(wc5)- $(wc1)$0 $(wc7)is *not* an ereet packet warrior!
+^fset format_whois_idle $(wc1)| $(wc2)i$(wc1)d$(wc6)le      $(wc1)- $(wc7)$0$(wc1)h $(wc7)$1$(wc1)m $(wc7)$2$(wc1)s
+^fset format_whois_footer $(wc5)ÀÄ$(wc2)-ÄÄ-Ä--ÄÄÄÄ$(wc1)ÄÄ--Ä-ÄÄ-Ä-ÄÄ-ÄÄÄÄÄ$(wc6)ÄÄÄÄ--Ä-ÄÄÄÄÄÄ
+

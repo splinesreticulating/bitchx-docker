@@ -1,0 +1,148 @@
+       
+Ú(osiris readme)ÄÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³                            ³
+³  1 - installation          ³
+³  2 - credits               ³
+³  3 - history               ³
+³  4 - osiris script notes   ³
+³  5 - note from the author  ³
+³  6 - greets                ³
+³                            ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÄÄ(osiris readme)Ù
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+1 - INSTALLATION
+
+before you load the script, make sure you run ~/osiris/default first.
+this will copy the osiris default settings to your home directory (~/)
+you only need to do this if it's your first time running the script or if
+you want to restore the default settings of the script. u *DONT* have to 
+run 'default' or './default' everytime you want to use the script. just the 
+one time is fine =P
+
+that's more or less it for the installation.
+
+*** NOTE *** not necessary in osiris-1c and later versions *** NOTE ***
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+2 - CREDITS
+
+these are the people that contributed to osiris in some way.
+
+void      - cosmetics/code
+treman    - cosmetics
+moogled   - cosmetics/ideas
+panasync  - made BitchX =)
+fiction   - cosmetics/ideas/ansi
+pent      - code
+timer     - cosmetics
+icetrey   - cosmetics/ideas
+codelogic - cosmetics/default shell script
+polder    - ansi
+Psychonut - code
+
+if i forgot you, just lemme know and you'll be added =)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+3 - HISTORY
+
+osiris was originally a script for CtoolZ by me and cha0s. we then were in
+the process of porting it to an EPIC script, but it sucked and we stopped.
+cha0s went on to do incarnate and i went on to do osiris for BitchX. it
+didn't exactly work out as planned, so then me and void went on to do
+rage/bx. after about a month of working on it, void decided to stick with
+his current script embryonic. i kept working on rage, and then i found out
+some lameass made or was making a script called rage too... so i decided to
+redo osiris, using our shit from rage. that way there's no confusion between
+the lameass rage script that someone made and this leet muthafuckin script.
+i will be adding in a dated history saying whats added as new versions are
+released.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+4 - OSIRIS SCRIPT NOTES
+
+osiris has support to play mp3 files and wav files. the way i have it setup
+is to use mpg123 and wavplay. i have included my copies of these programs
+because they wont output any garbage. the files are in ~/osiris/sound
+if you need any help with setting up the mp3 or wav players, just msg me
+and ill help you. the flags listed when u type /mp3 aren't the only
+available flags, they are just most commonly used. if you want the full list
+of flags, from your shell prompt type '/dir/to/mpg123' and it'll show u all
+the available flags. before msging me make sure u join #BitchX and see if im
+there, theres some lamer that likes to use my nick (plk6@mars.its.yale.edu)
+so dont confuse the 2 of us. my hostname is always *tor-cn.concentric.net
+some of the stuff in this script might be confusing at first, but like i
+said, if u need help..msg me. if you find bugs and/or have ideas, put them
+in a file called yournick.osiris.bugs or yournick.osiris.ideas
+
+you can set ansi in your realname by using the cparse color codes.
+if youre either using /config to set your realname or just using /realname
+the way to set it with ansi is like this:
+
+/realname %Wl%Be%be%Kt           <-.- this will make your realname say 'leet'
+                                   `- with a white to blue to high black fade
+
+using /config:
+
+do /config, then at the menu..hit the character for realname [n], and you'll
+see this:
+
+realname? 
+
+at that prompt u use the cparse color codes just like in /realname.
+
+cparse color code reference: 
+
+%w == white              %W == bright white
+%r == red                %R == bright red
+%b == blue               %B == bright blue
+%c == cyan               %C == bright cyan
+%g == green              %G == bright green
+%p == magenta/purple     %P == bright magenta/purple
+%m == magenta/purple     %M == bright magenta/purple
+%y == brown              %Y == yellow
+
+
+this script will most likely screw up if used in the win95 version of
+bitchx. dont complain to me about this. i dont use bitchx for win95, so i
+dont support it.
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+5 - NOTE FROM THE AUTHOR
+
+dont rip. plain and simple. if you want to use code or something, just ask
+and make sure you give credits. usually scripters dont waste their time
+making scripts so lameass queers can just go and change the name of the
+script or take code and use it in their own script. i dont really care if u
+use code/cosmetics, but at least have respect and ask and give credits.
+im sure you have seen this in many other scripts, so if you dont get the
+point by now... you must be stupid or something. thats it for now. byebye =)
+
+ÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄÄ
+
+6 - GREETS
+
+ÚÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄÂÄÄÄÄÄÄÄÄÄÄÄÄ¿
+³ void      ³ treman    ³ moogled   ³ suicide    ³ icetrey    ³
+³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³
+³ fiction   ³ SellFone  ³ panasync  ³ green      ³ Baron      ³
+³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³
+³ sideshow  ³ mathe     ³ TrN       ³ JMnemonic  ³ |Rain|     ³
+³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³
+³ legacy    ³ Fudd      ³ crYptIc   ³ Sheik      ³ anitrate   ³
+³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³
+³ oweff     ³ TDOG      ³ ewheat    ³ Rwf        ³ Networked  ³
+³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³
+³ bighead   ³ Baron     ³ dioxide   ³ x|an       ³ cha0s      ³
+³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³ÄÄÄÄÄÄÄÄÄÄÄÄ³
+³ codelogic ³ Psychonut ³           ³ polder     ³ #BitchX    ³
+ÀÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÁÄÄÄÄÄÄÄÄÄÄÄÄÙ
+
+leet huh? =)
+
+.,: eof :,.

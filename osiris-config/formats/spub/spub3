@@ -1,0 +1,1 @@
+^fset format_send_public %b®${ischanop($2 $1)?[$(hblk)@$(cl)]:isvoice($1 $2)?[$(hblk)+$(cl)]:}%c$2%b¯%n $3-

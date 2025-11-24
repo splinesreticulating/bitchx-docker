@@ -1,0 +1,2 @@
+SET FORMAT_MSG %K[%P$1%K(%p$2%K)]%n $3-
+SET FORMAT_SEND_MSG %K[%rmsg%K(%R$1%K)] %n$3-

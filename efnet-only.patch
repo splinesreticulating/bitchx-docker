@@ -1,0 +1,10 @@
+--- a/source/server.c
++++ b/source/server.c
+@@ -79,6 +79,7 @@ static	int	never_connected = 1;
+
+ void setup_default_servers(void)
+ {
++	return; /* Disable all hardcoded servers - load from ~/.BitchX/servers instead */
+ 	/* EFnet */
+ 	add_to_server_list("irc.efnet.org", 6667, NULL, NULL, 0, "EFnet");
+ 	add_to_server_list("irc.efnet.nl", 6667, NULL, NULL, 0, "EFnet");

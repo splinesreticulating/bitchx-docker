@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "BitchX Docker - Final Version"
+echo ""
+echo "Start container:"
+echo "  docker compose up -d"
+echo ""
+echo "Attach to BitchX:"
+echo "  docker attach --detach-keys=\"ctrl-p,ctrl-q\" \$(docker compose ps -q bitchx)"
+echo ""
+echo "IMPORTANT:"
+echo "  - Use Ctrl+P Ctrl+Q to detach safely"
+echo "  - If you type /detach and it breaks, just run:"
+echo "    docker compose restart"
+echo "    docker attach --detach-keys=\"ctrl-p,ctrl-q\" \$(docker compose ps -q bitchx)"
+echo ""
+echo "The /detach command will break the session but recovery is instant."
