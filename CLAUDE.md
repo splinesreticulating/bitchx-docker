@@ -28,42 +28,45 @@ The container runs as user `mute` with UID/GID set from environment variables. T
 ### Initialization Flow
 1. Container starts with `entrypoint.sh`
 2. Kills any existing BitchX processes to prevent duplicates
-3. Container runs `tail -f /dev/null` to stay alive
-4. Osiris script is loaded automatically via `.ircrc` when BitchX starts
+3. Container runs `tail -f /dev/null` to keep container alive
+4. BitchX is started manually via `docker compose exec` or launcher scripts
+5. Osiris script is loaded automatically via `.ircrc` when BitchX starts
+6. Users attach directly to the BitchX process via Docker's attach mechanism
 
 ## Common Commands
 
 ### Starting BitchX
 ```bash
-# Quick start (builds, starts container, attaches)
+# Quick start (builds, starts container, launches BitchX)
 ./start-bitchx.sh
 
 # Manual start
 export UID=$(id -u)
 export GID=$(id -g)
 docker compose up -d
-docker compose attach bitchx
+docker compose exec bitchx /home/mute/launch-bx.sh
 ```
 
 ### Session Management
 ```bash
 # Using the session manager
-./bitchx.sh start      # Start new session
-./bitchx.sh attach     # Attach to running session
+./bitchx.sh start      # Start BitchX (builds, starts container, launches BitchX)
+./bitchx.sh attach     # Attach to running BitchX session
 ./bitchx.sh status     # Check session status
 ./bitchx.sh stop       # Stop session
 ./bitchx.sh exec '<cmd>' # Execute IRC command
 
 # Direct Docker commands
-docker compose up -d
-docker compose attach bitchx
-docker compose down
+docker compose up -d                                # Start container
+docker compose attach bitchx                            # Attach to running BitchX
+docker compose down                                  # Stop container
 ```
 
 ### Detaching from BitchX
-- **Recommended**: Use `Ctrl+P, Ctrl+Q` to detach safely
-- **Avoid**: BitchX's `/detach` command can break the session
-- **Recovery**: If session breaks, run `docker compose restart` and reattach
+- **Recommended**: Use `Ctrl+P, Ctrl+Q` to detach from Docker session safely
+- **Alternative**: Just close your terminal - BitchX keeps running
+- **Avoid**: BitchX's `/detach` command (not needed with Docker attach)
+- **Recovery**: If session breaks, run `docker compose restart` and reattach with `./bitchx.sh attach`
 
 ### Building
 ```bash
@@ -81,16 +84,19 @@ docker compose exec bitchx bash
 
 # Launch BitchX inside container
 docker compose exec bitchx /home/mute/launch-bx.sh
+
+# Attach to running BitchX session
+docker compose attach bitchx
 ```
 
 ## Key Files
 
 ### Entry Scripts
-- `start-bitchx.sh` - Primary launcher (sets UID/GID, builds, starts, attaches)
+- `start-bitchx.sh` - Primary launcher (sets UID/GID, builds, starts, launches BitchX)
 - `bitchx.sh` - Session manager with attach/detach/exec commands
 - `bx.sh` - Alternative launcher with instructions
 - `entrypoint.sh` - Container entrypoint (kills existing processes, runs tail)
-- `launch-bx.sh` - BitchX launcher used inside container
+- `launch-bx.sh` - BitchX launcher script (sets IRCNAME, starts BitchX)
 
 ### Configuration
 - `.env` - Environment variables for UID/GID mapping
@@ -125,8 +131,11 @@ If file permissions are incorrect:
 ### Default Server
 The default IRC server is `irc.choopa.net` (EFnet). Full server list is in `efnet-servers.txt`.
 
-### Container Keeps Running
-The compose.yaml uses `command: ["tail", "-f", "/dev/null"]` to keep the container alive. This allows attaching/detaching from the BitchX session without stopping the container.
+### Container Architecture
+- The compose.yaml uses `command: ["tail", "-f", "/dev/null"]` to keep the container alive
+- BitchX runs as a process started via `docker compose exec` or launcher scripts
+- This allows attaching/detaching from BitchX without stopping the container
+- The BitchX process persists even when users detach from Docker session
 
 ## IRC Server Configuration
 

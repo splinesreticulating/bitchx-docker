@@ -9,8 +9,9 @@ export TERM=xterm
 # Export current user ID and group ID (handle readonly UID)
 MY_UID=$(id -u)
 MY_GID=$(id -g)
-export UID=$MY_UID
-export GID=$MY_GID
+# Only export if not already set (from .env)
+if [ -z "$UID" ]; then export UID=$MY_UID; fi
+if [ -z "$GID" ]; then export GID=$MY_GID; fi
 
 # Build and run the container
 echo "Building BitchX container with osiris script..."
