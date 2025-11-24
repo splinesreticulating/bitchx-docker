@@ -51,7 +51,7 @@ docker compose exec bitchx /home/mute/launch-bx.sh
 ```bash
 # Using the session manager
 ./bitchx.sh start      # Start BitchX (builds, starts container, launches BitchX)
-./bitchx.sh attach     # Attach to running BitchX session
+./bitchx.sh attach     # Attach to running BitchX or start new if none exists
 ./bitchx.sh status     # Check session status
 ./bitchx.sh stop       # Stop session
 ./bitchx.sh exec '<cmd>' # Execute IRC command
@@ -59,6 +59,7 @@ docker compose exec bitchx /home/mute/launch-bx.sh
 # Direct Docker commands
 docker compose up -d                                # Start container
 docker compose attach bitchx                            # Attach to running BitchX
+docker compose exec bitchx /home/mute/launch-bx.sh     # Start new BitchX session
 docker compose down                                  # Stop container
 ```
 
@@ -67,6 +68,7 @@ docker compose down                                  # Stop container
 - **Alternative**: Just close your terminal - BitchX keeps running
 - **Avoid**: BitchX's `/detach` command (not needed with Docker attach)
 - **Recovery**: If session breaks, run `docker compose restart` and reattach with `./bitchx.sh attach`
+- **Note**: `./bitchx.sh attach` will connect to existing BitchX or start new if none exists
 
 ### Building
 ```bash
