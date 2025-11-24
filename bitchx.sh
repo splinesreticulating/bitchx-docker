@@ -36,9 +36,16 @@ check_container() {
 
 attach_session() {
     if check_container; then
-        echo "🔗 Attaching to BitchX session..."
-        echo "   Use Ctrl+P, Ctrl+Q to detach"
-        docker compose attach "$CONTAINER_NAME"
+        # Check if BitchX is already running (look for BitchX in process list)
+        if docker compose exec bitchx sh -c 'for pid in /proc/[0-9]*/cmdline; do [ -f "$pid" ] && cat "$pid" 2>/dev/null | grep -q BitchX && exit 0; done; exit 1'; then
+            echo "🔗 Attaching to existing BitchX session..."
+            echo "   Use Ctrl+P, Ctrl+Q to detach"
+            docker compose attach "$CONTAINER_NAME"
+        else
+            echo "🚀 Starting new BitchX session..."
+            echo "   Use Ctrl+P, Ctrl+Q to detach"
+            docker compose exec bitchx /home/mute/launch-bx.sh
+        fi
     fi
 }
 
