@@ -44,6 +44,6 @@ See `osiris-config/README.FIRST` for Osiris documentation.
 
 ## EFnet Servers
 
-Default: `irc.choopa.net`. More servers in `efnet-servers.txt`.
+Default: `irc.choopa.net`
 
 Switch servers in BitchX: `/server irc.mzima.net`
