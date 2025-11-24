@@ -37,13 +37,14 @@ attach_session() {
     if check_container; then
         echo "🔗 Attaching to BitchX session..."
         echo "   Use Ctrl+P, Ctrl+Q to detach"
-        echo "   Note: Will try to attach to existing BitchX first"
         
-        # Try to attach to existing BitchX session
-        if docker compose attach "$CONTAINER_NAME" 2>/dev/null; then
-            echo "✅ Successfully attached to existing BitchX session"
+        # Check if BitchX is already running in container
+        if docker compose exec bitchx sh -c 'for pid in /proc/[0-9]*/cmdline; do [ -f "$pid" ] && cat "$pid" 2>/dev/null | grep -q "BitchX -n mute" && echo "Found" && exit 0; done; echo "Not found" && exit 1'; then
+            echo "✅ Found existing BitchX session, connecting..."
+            # Connect to existing BitchX session via exec
+            docker compose exec bitchx /home/mute/launch-bx.sh
         else
-            echo "⚠️  No existing BitchX session found, starting new one..."
+            echo "⚠️  No BitchX session found, starting new one..."
             docker compose exec bitchx /home/mute/launch-bx.sh
         fi
     fi
