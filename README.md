@@ -31,8 +31,8 @@ Containerized BitchX IRC client (version 1.3) with Osiris script pre-loaded and 
 ## Configuration
 
 Default settings:
-- **Nickname**: `mute`
-- **Realname**: `Screaming Mute`
+- **Nickname**: `You`
+- **Realname**: `First Last`
 - **Default Server**: `irc.choopa.net` (EFnet)
 
 Config files (persistent):
