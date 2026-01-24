@@ -1,6 +1,6 @@
 # IRC Configuration
-set realname Screaming Mute
-set nickname mute
+set realname First Last
+set nickname You
 
 # Load Osiris script
 load ~/osiris/os.bx
