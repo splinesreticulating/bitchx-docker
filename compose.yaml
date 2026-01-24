@@ -13,7 +13,7 @@ services:
       - TERM=xterm-256color
     user: "${UID}:${GID}"
     volumes:
-      - ./config:/home/mute/.BitchX
-      - ./osiris-config:/home/mute/osiris
-      - ./config/.ircrc:/home/mute/.ircrc
-      - ./launch-bx.sh:/home/mute/launch-bx.sh
+      - ./config:/home/you/.BitchX
+      - ./osiris-config:/home/you/osiris
+      - ./config/.ircrc:/home/you/.ircrc
+      - ./launch-bx.sh:/home/you/launch-bx.sh
