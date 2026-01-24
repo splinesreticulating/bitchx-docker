@@ -29,7 +29,7 @@ RUN apt-get update && apt-get install -y \
 # Setup User Arguments
 ARG USER_ID
 ARG GROUP_ID
-ARG USER_NAME=mute
+ARG USER_NAME=you
 
 # Create the matching user
 RUN groupadd -g ${GROUP_ID} ${USER_NAME} && \
@@ -44,10 +44,10 @@ WORKDIR /home/${USER_NAME}
 RUN mkdir -p /home/${USER_NAME}/.BitchX /home/${USER_NAME}/osiris
 
 # Copy entrypoint script
-COPY --chown=${USER_NAME}:${USER_NAME} entrypoint.sh /home/mute/entrypoint.sh
+COPY --chown=${USER_NAME}:${USER_NAME} entrypoint.sh /home/you/entrypoint.sh
 RUN chmod +x /home/mute/entrypoint.sh
 
 # Copy custom server list to home directory (BitchX checks here first)
-COPY --chown=${USER_NAME}:${USER_NAME} config/.ircservers /home/mute/.ircservers
+COPY --chown=${USER_NAME}:${USER_NAME} config/.ircservers /home/you/.ircservers
 
 ENTRYPOINT ["/home/mute/entrypoint.sh"]
