@@ -9,4 +9,4 @@ load ~/osiris/os.bx
 load ~/osiris/sets/v.custom
 
 # Load personal script
-load ~/.bitchx/my.irc
+load ~/.BitchX/my.irc
