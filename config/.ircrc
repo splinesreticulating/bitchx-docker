@@ -7,3 +7,6 @@ load ~/osiris/os.bx
 
 # Custom CTCP VERSION reply (using Osiris version system)
 load ~/osiris/sets/v.custom
+
+# Load personal script
+load ~/.bitchx/my.irc

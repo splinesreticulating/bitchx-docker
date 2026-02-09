@@ -16,6 +16,7 @@ osiris-config/osiris.log
 # Docker volumes data
 config/*
 !config/.ircrc
+!config/my.irc
 
 # macOS metadata
 .DS_Store

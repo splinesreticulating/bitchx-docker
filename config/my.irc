@@ -1,0 +1,82 @@
+^SET NOVICE OFF
+^SET EXEC_PROTECTION OFF
+
+echo
+echo **********************************************
+echo *** Loading Epitaph's Magic Ereeto Script! ***
+echo **********************************************
+echo
+
+dcc autoget
+bind ^N PARSE_COMMAND /window next
+
+alias nw {
+  /window new hide
+  /window next
+  /window double on
+}
+
+alias squirrel {
+  /join #dark
+  /window new hide
+  /window next
+  /window double on
+  /join #bastardos
+  /window new hide
+  /window next
+  /window double on
+  /join #radiohead
+  /join ^B^BTRiNiTY
+} 
+
+
+alias s {  
+   if ([$0]) {
+     if ([$[1]1]==[#]) {
+       //quote privmsg $0 :xdcc send $1
+       /echo * Requesting pack $1 from $0...
+     }
+
+     if ([$1]) { 
+       //quote privmsg $0 :xdcc send #$1 
+       /echo * Requesting pack #$1 from $0...
+     }
+
+     { 
+       //quote privmsg $0 :xdcc list
+       /echo * Requesting pack list from $0...
+     }
+
+   }
+   {
+      echo Usage: /s <nick> will /msg <nick> xdcc list, whereas
+      echo        /s <nick> <#pack> will /msg <nick> xdcc send <#pack>
+   }
+}
+
+alias xl {
+  /msg $0 xdcc list
+  /echo * Requesting pack list from $0...
+}
+
+alias nomp3 {
+  /ignore zmi* public
+  /ignore apc* public
+  /ignore uma* public
+}
+
+alias ehelp {
+  
+  /echo
+  /echo Epitaph's Script commands:
+  /echo --------------------------
+  /echo
+  /echo /S     - XDCC SEND a pack (usage: /s nick-dcc 1 to send pack #1, or /s nick-dcc for pack list)
+  /echo /XL    - Request XDCC LIST from a bot
+  /echo /NW    - New window (switch between windows by pressing ESC-1, ESC-2, etc., or press CTRL-N to go to next window)
+  /echo /NOMP3 - Ignore MP3-offer bots in warez channels (ZMI*, APC*, and UMA*)
+  /echo
+}
+
+echo + Script Loaded! Type /EHELP for list of commands.
+echo
