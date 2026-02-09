@@ -35,7 +35,8 @@ cmd_start() {
     # Set GID for user mapping (UID is auto-set by bash)
     export GID=$(id -g)
 
-    docker compose up -d --build
+    # Disable Bake to use standard Docker build
+    DOCKER_BUILDKIT=0 docker compose up -d --build
 
     echo ""
     echo "BitchX is starting. Attach with: $0 attach"
