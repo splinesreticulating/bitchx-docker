@@ -17,6 +17,10 @@ osiris-config/osiris.log
 config/*
 !config/.ircrc
 
+# macOS metadata
+.DS_Store
+.AppleDouble
+
 # Temporary files
 *.tmp
 *.swp
