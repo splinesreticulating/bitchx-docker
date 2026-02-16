@@ -17,7 +17,11 @@
       "Bash(git commit:*)",
       "Bash(git push)",
       "Bash(test:*)",
-      "Bash(git rm:*)"
+      "Bash(git rm:*)",
+      "Bash(ssh:*)",
+      "Bash(docker buildx:*)",
+      "Bash(./bx.sh stop:*)",
+      "Bash(./bx.sh start:*)"
     ],
     "deny": [],
     "ask": []
