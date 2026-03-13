@@ -44,7 +44,7 @@ WORKDIR /home/${USER_NAME}
 RUN mkdir -p /home/${USER_NAME}/.BitchX /home/${USER_NAME}/osiris
 
 # Copy entrypoint script
-COPY --chown=${USER_NAME}:${USER_NAME} entrypoint.sh /home/${USER_NAME}/entrypoint.sh
-RUN chmod +x /home/${USER_NAME}/entrypoint.sh
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
 
-ENTRYPOINT ["/home/${USER_NAME}/entrypoint.sh"]
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
