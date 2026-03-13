@@ -38,13 +38,13 @@ RUN groupadd -g ${GROUP_ID} ${USER_NAME} && \
 # Copy compiled BitchX from builder
 COPY --from=builder /usr/local /usr/local
 
+# Copy entrypoint script (as root, before USER switch)
+COPY entrypoint.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # Switch to user
 USER ${USER_NAME}
 WORKDIR /home/${USER_NAME}
 RUN mkdir -p /home/${USER_NAME}/.BitchX /home/${USER_NAME}/osiris
-
-# Copy entrypoint script
-COPY entrypoint.sh /usr/local/bin/entrypoint.sh
-RUN chmod +x /usr/local/bin/entrypoint.sh
 
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
