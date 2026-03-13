@@ -18,6 +18,9 @@ config/*
 !config/.ircrc
 !config/my.irc
 
+# Claude Code
+.claude/
+
 # macOS metadata
 .DS_Store
 .AppleDouble
