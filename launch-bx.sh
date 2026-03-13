@@ -21,11 +21,10 @@ EOF
 fi
 
 export TERM=xterm-256color
-export IRCNAME="You"
 
 # Use custom server file if available
-if [ -f "/home/you/.ircservers" ]; then
-    exec BitchX -n you -N -r /home/you/.ircservers "$@"
+if [ -f "$HOME/.ircservers" ]; then
+    exec BitchX -n ${NICK:-you} -N -r $HOME/.ircservers "$@"
 else
-    exec BitchX -n you -N "$@"
+    exec BitchX -n ${NICK:-you} -N "$@"
 fi

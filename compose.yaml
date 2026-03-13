@@ -5,15 +5,18 @@ services:
       args:
         USER_ID: ${UID}
         GROUP_ID: ${GID}
+        USER_NAME: ${USER_NAME:-you}
     image: bitchx:local
     container_name: bitchx_session
     stdin_open: true
     tty: true
     environment:
       - TERM=xterm-256color
+      - NICK=${NICK:-you}
+      - IRCNAME=${IRCNAME:-You}
     user: "${UID}:${GID}"
     volumes:
-      - ./config:/home/you/.BitchX
-      - ./osiris-config:/home/you/osiris
-      - ./config/.ircrc:/home/you/.ircrc
-      - ./launch-bx.sh:/home/you/launch-bx.sh
+      - ./config:/home/${USER_NAME:-you}/.BitchX
+      - ./osiris-config:/home/${USER_NAME:-you}/osiris
+      - ./config/.ircrc:/home/${USER_NAME:-you}/.ircrc
+      - ./launch-bx.sh:/home/${USER_NAME:-you}/launch-bx.sh

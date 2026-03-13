@@ -1,7 +1,4 @@
 # IRC Configuration
-set realname First Last
-set nickname You
-
 # Load Osiris script
 load ~/osiris/os.bx
 
