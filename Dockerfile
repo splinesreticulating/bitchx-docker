@@ -44,10 +44,7 @@ WORKDIR /home/${USER_NAME}
 RUN mkdir -p /home/${USER_NAME}/.BitchX /home/${USER_NAME}/osiris
 
 # Copy entrypoint script
-COPY --chown=${USER_NAME}:${USER_NAME} entrypoint.sh /home/you/entrypoint.sh
-RUN chmod +x /home/you/entrypoint.sh
+COPY --chown=${USER_NAME}:${USER_NAME} entrypoint.sh /home/${USER_NAME}/entrypoint.sh
+RUN chmod +x /home/${USER_NAME}/entrypoint.sh
 
-# Copy custom server list to home directory (BitchX checks here first)
-COPY --chown=${USER_NAME}:${USER_NAME} config/.ircservers /home/you/.ircservers
-
-ENTRYPOINT ["/home/mute/entrypoint.sh"]
+ENTRYPOINT ["/home/${USER_NAME}/entrypoint.sh"]
