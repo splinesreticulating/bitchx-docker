@@ -19,4 +19,5 @@ services:
       - ./config:/home/${USER_NAME:-you}/.BitchX
       - ./osiris-config:/home/${USER_NAME:-you}/osiris
       - ./config/.ircrc:/home/${USER_NAME:-you}/.ircrc
+      - ./config/.ircservers:/home/${USER_NAME:-you}/.ircservers
       - ./launch-bx.sh:/home/${USER_NAME:-you}/launch-bx.sh
