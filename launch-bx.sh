@@ -29,7 +29,7 @@ export TERM=xterm-256color
 # is not accidentally created as a directory by Compose.
 server_file="$HOME/.BitchX/.ircservers"
 if [ -s "$server_file" ]; then
-    exec BitchX -n "${NICK:-you}" -N -s -r "$server_file" "$@"
+    exec BitchX -n "${NICK:-you}" -s -r "$server_file" "$@"
 else
-    exec BitchX -n "${NICK:-you}" -N -s "${IRC_SERVER:-irc.efnet.org:6697}" "$@"
+    exec BitchX -n "${NICK:-you}" -s "${IRC_SERVER:-irc.efnet.org:6697}" "$@"
 fi
