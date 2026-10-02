@@ -31,19 +31,49 @@ Containerized BitchX IRC client (version 1.3) with Osiris script pre-loaded and 
 ## Configuration
 
 Default settings:
-- **Nickname**: `You`
-- **Realname**: `First Last`
-- **Default Server**: `irc.choopa.net` (EFnet)
+- **Nickname**: `you`
+- **Realname**: `You`
+- **Default Server**: `irc.efnet.org:6697` (EFnet, TLS)
+- **Container UID/GID**: account running `./bx.sh start`
 
 Config files (persistent):
 - `config/.ircrc` - Startup commands, loads Osiris
-- `config/.BitchX/` - BitchX configuration
+- `config/.ircservers` - Optional custom server list (not committed)
+- `config/` - BitchX runtime configuration
 - `osiris-config/` - Osiris themes, formats, modules
 
 See `osiris-config/README.FIRST` for Osiris documentation.
 
+Optional environment settings can be placed in `.env`:
+
+```dotenv
+USER_NAME=you
+NICK=you
+IRCNAME=You
+IRC_SERVER=irc.efnet.org:6697
+RESTART_POLICY=no
+```
+
+`./bx.sh start` supplies `BITCHX_HOST_UID` and `BITCHX_HOST_GID`; direct
+`docker compose` use falls back to legacy `.env` values named `UID` and `GID`,
+then to 1000 when those are unset.
+
+Set `RESTART_POLICY=unless-stopped` for an always-on host. The default `no`
+allows `/quit` to leave the container stopped.
+
 ## EFnet Servers
 
-Default: `irc.choopa.net`
+Default: `irc.efnet.org:6697`
 
-Switch servers in BitchX: `/server irc.mzima.net`
+The launcher always passes BitchX's `-s` flag, including when loading
+`config/.ircservers`. Custom entries must therefore use a server's TLS port:
+
+```text
+irc.efnet.org:6697
+```
+
+To switch interactively, include `-ssl`: `/server -ssl irc.efnet.org:6697`.
+
+> **TLS limitation:** this version of BitchX encrypts the connection but does
+> not verify the server certificate or hostname. It protects against passive
+> cleartext capture, but not an active man-in-the-middle attack.

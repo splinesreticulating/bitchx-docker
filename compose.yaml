@@ -3,21 +3,22 @@ services:
     build:
       context: .
       args:
-        USER_ID: ${UID}
-        GROUP_ID: ${GID}
+        USER_ID: ${BITCHX_HOST_UID:-${UID:-1000}}
+        GROUP_ID: ${BITCHX_HOST_GID:-${GID:-1000}}
         USER_NAME: ${USER_NAME:-you}
     image: bitchx:local
     container_name: bitchx_session
+    restart: ${RESTART_POLICY:-no}
     stdin_open: true
     tty: true
     environment:
       - TERM=xterm-256color
       - NICK=${NICK:-you}
       - IRCNAME=${IRCNAME:-You}
-    user: "${UID}:${GID}"
+      - IRC_SERVER=${IRC_SERVER:-irc.efnet.org:6697}
+    user: "${BITCHX_HOST_UID:-${UID:-1000}}:${BITCHX_HOST_GID:-${GID:-1000}}"
     volumes:
       - ./config:/home/${USER_NAME:-you}/.BitchX
       - ./osiris-config:/home/${USER_NAME:-you}/osiris
       - ./config/.ircrc:/home/${USER_NAME:-you}/.ircrc
-      - ./config/.ircservers:/home/${USER_NAME:-you}/.ircservers
       - ./launch-bx.sh:/home/${USER_NAME:-you}/launch-bx.sh

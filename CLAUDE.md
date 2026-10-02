@@ -12,7 +12,7 @@ BitchX Docker provides a containerized BitchX IRC client (version 1.3) with the 
 
 **Flow**: `entrypoint.sh` → `launch-bx.sh` → BitchX as PID 1. Osiris auto-loads via `config/.ircrc`. Container stops when BitchX exits.
 
-**Build**: Multi-stage build compiles BitchX with SSL in builder stage, then creates minimal runtime image. UID/GID from `.env` (default: 1003/1003) ensures correct file permissions.
+**Build**: Multi-stage build compiles BitchX with SSL in the builder stage, then creates a minimal runtime image. `./bx.sh start` exports the invoking account's UID/GID as `BITCHX_HOST_UID` and `BITCHX_HOST_GID`; direct Compose use falls back to legacy `UID`/`GID` values and then to 1000.
 
 ## Usage
 
@@ -27,13 +27,15 @@ BitchX Docker provides a containerized BitchX IRC client (version 1.3) with the 
 
 **Scripts**: `bx.sh` (main manager), `entrypoint.sh` (container entrypoint), `launch-bx.sh` (BitchX launcher)
 
-**Config**: `.env` (UID/GID), `compose.yaml`, `Dockerfile`, `config/.ircrc` (loads Osiris), `config/.bitchxrc` (BitchX config)
+**Config**: `.env` (optional name/server/restart overrides), `compose.yaml`, `Dockerfile`, `config/.ircrc` (loads Osiris), `config/.bitchxrc` (BitchX config), `config/.ircservers` (optional untracked server list)
 
 **Osiris**: `osiris-config/os.bx` (main script), `osiris-config/sets/v.custom` (CTCP VERSION spoofing), themes/formats/modules subdirectories
 
 ## Technical Notes
 
 - BitchX compiled with `--with-ssl --with-plugins`
+- Debian is pinned by image digest and BitchX is pinned by Git commit in `Dockerfile`
+- `launch-bx.sh` enforces TLS (`-s`), defaulting to `irc.efnet.org:6697`; BitchX does not verify the TLS certificate/hostname
 - `stdin_open` and `tty` enabled for interactive use
 - Session persists when detached - no duplicate instances
 - Fix permissions if needed: `sudo chown -R $(id -u):$(id -g) config/ osiris-config/`

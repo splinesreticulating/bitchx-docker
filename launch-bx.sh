@@ -1,6 +1,8 @@
 #!/bin/bash
 # Launch BitchX with proper configuration
 
+set -euo pipefail
+
 # Detect if we're running outside the Docker container
 if [ ! -f "/.dockerenv" ]; then
     cat << 'EOF'
@@ -22,9 +24,12 @@ fi
 
 export TERM=xterm-256color
 
-# Use custom server file if available
-if [ -f "$HOME/.ircservers" ]; then
-    exec BitchX -n ${NICK:-you} -N -r $HOME/.ircservers "$@"
+# BitchX's -s flag enables SSL/TLS for every server loaded after it. The
+# server list lives in the persistent config mount, so an absent optional file
+# is not accidentally created as a directory by Compose.
+server_file="$HOME/.BitchX/.ircservers"
+if [ -s "$server_file" ]; then
+    exec BitchX -n "${NICK:-you}" -N -s -r "$server_file" "$@"
 else
-    exec BitchX -n ${NICK:-you} -N "$@"
+    exec BitchX -n "${NICK:-you}" -N -s "${IRC_SERVER:-irc.efnet.org:6697}" "$@"
 fi

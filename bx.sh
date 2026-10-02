@@ -1,6 +1,8 @@
 #!/bin/bash
 # BitchX Docker Manager
 
+set -euo pipefail
+
 CONTAINER_NAME="bitchx_session"
 
 show_help() {
@@ -32,8 +34,9 @@ check_container() {
 cmd_start() {
     echo "Starting BitchX..."
 
-    # Set GID for user mapping (UID is auto-set by bash)
-    export GID=$(id -g)
+    # Map the container user to the account running this script.
+    export BITCHX_HOST_UID="$(id -u)"
+    export BITCHX_HOST_GID="$(id -g)"
 
     # Disable Bake for systems without buildx
     COMPOSE_EXPERIMENTAL_BAKE=0 docker compose up -d --build
